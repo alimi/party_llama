@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_01_26_202632) do
+ActiveRecord::Schema.define(version: 2018_01_26_231636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,17 @@ ActiveRecord::Schema.define(version: 2018_01_26_202632) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "guests", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.bigint "party_id"
+    t.boolean "attending_patterson_park", default: false
+    t.boolean "attending_douglass_myers", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["party_id"], name: "index_guests_on_party_id"
+  end
+
   create_table "parties", force: :cascade do |t|
     t.string "name"
     t.string "reservation_code"
@@ -44,4 +55,5 @@ ActiveRecord::Schema.define(version: 2018_01_26_202632) do
     t.index ["reservation_code"], name: "index_parties_on_reservation_code"
   end
 
+  add_foreign_key "guests", "parties"
 end
