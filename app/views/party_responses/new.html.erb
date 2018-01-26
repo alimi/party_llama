@@ -1,0 +1,5 @@
+<%= form_with scope: :party_response, url: party_responses_path do |form| %>
+  <%= form.label :reservation_code %>
+  <%= form.text_field :reservation_code %>
+  <%= form.submit "Submit" %>
+<% end %>
