@@ -9,5 +9,7 @@ class DouglassMyersResponsesController < ApplicationController
     )
 
     attending_guests.update_all(attending_douglass_myers: true)
+
+    redirect_to party_responses_path
   end
 end

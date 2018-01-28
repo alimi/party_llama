@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resource :introduction, only: [:show]
 
+  resources :party_responses, only: [:index]
+
   resource :patterson_park_responses, only: [:new, :create]
 
   resources :sessions, only: [:new, :create]

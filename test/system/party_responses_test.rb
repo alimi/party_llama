@@ -23,6 +23,15 @@ class PartyResponsesTest < ApplicationSystemTestCase
     check "Black Panther"
     check "Iron Man"
     click_button "Next"
+
+    assert page.has_content?("Review")
+    assert page.has_content?(
+      "Patterson Park 2 guests attending: Black Panther and Captain America"
+    )
+    assert page.has_content?(
+      "Douglass-Myers 2 guests attending: Black Panther and Iron Man"
+    )
+    click_button "Next"
   end
 
   test "a party enters an invalid reservation code"
