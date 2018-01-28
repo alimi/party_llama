@@ -31,7 +31,9 @@ class PartyResponsesTest < ApplicationSystemTestCase
     assert page.has_content?(
       "Douglass-Myers 2 guests attending: Black Panther and Iron Man"
     )
-    click_button "Next"
+    click_button "Submit Responses"
+
+    assert page.has_content?("Yay")
   end
 
   test "a party enters an invalid reservation code"
