@@ -1,7 +1,7 @@
 require "application_system_test_case"
 
 class PartyResponsesTest < ApplicationSystemTestCase
-  test "a party confirms their reservation" do
+  test "a party submits their responses" do
     party = Party.create!(name: "The Avengers", reservation_code: "232425")
     party.guests.create!(first_name: "Black", last_name: "Panther")
     party.guests.create!(first_name: "Iron", last_name: "Man")
@@ -36,5 +36,15 @@ class PartyResponsesTest < ApplicationSystemTestCase
     assert page.has_content?("Yay")
   end
 
-  test "a party enters an invalid reservation code"
+  test "a party enters an invalid reservation code" do
+    party = Party.create!(name: "The Avengers", reservation_code: "232425")
+
+    visit root_path
+    fill_in "Reservation code", with: "something wrong"
+    click_button "Submit"
+
+    assert page.has_content?("Sorry")
+  end
+
+  test "a party revists after submitting their responses"
 end

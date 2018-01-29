@@ -1,3 +1,7 @@
+<% if flash[:error] %>
+  <p><%= flash[:error] %></p>
+<% end %>
+
 <%= form_with scope: :session, url: sessions_path do |form| %>
   <%= form.label :reservation_code %>
   <%= form.text_field :reservation_code %>
