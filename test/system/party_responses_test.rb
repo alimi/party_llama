@@ -1,14 +1,21 @@
 require "application_system_test_case"
 
 class PartyResponsesTest < ApplicationSystemTestCase
+  setup do
+    @party = Party.create!(
+      name: "The Avengers",
+      reservation_code: "232425",
+      responses_end_at: 1.week.from_now
+    )
+  end
+
   test "a party submits their responses" do
-    party = Party.create!(name: "The Avengers", reservation_code: "232425")
-    party.guests.create!(first_name: "Black", last_name: "Panther")
-    party.guests.create!(first_name: "Iron", last_name: "Man")
-    party.guests.create!(first_name: "Captain", last_name: "America")
+    @party.guests.create!(first_name: "Black", last_name: "Panther")
+    @party.guests.create!(first_name: "Iron", last_name: "Man")
+    @party.guests.create!(first_name: "Captain", last_name: "America")
 
     visit root_path
-    fill_in "Reservation code", with: party.reservation_code
+    fill_in "Reservation code", with: @party.reservation_code
     click_button "Submit"
 
     assert page.has_content?("Welcome")
@@ -37,8 +44,6 @@ class PartyResponsesTest < ApplicationSystemTestCase
   end
 
   test "a party enters an invalid reservation code" do
-    party = Party.create!(name: "The Avengers", reservation_code: "232425")
-
     visit root_path
     fill_in "Reservation code", with: "something wrong"
     click_button "Submit"
@@ -46,5 +51,13 @@ class PartyResponsesTest < ApplicationSystemTestCase
     assert page.has_content?("Sorry")
   end
 
-  test "a party revists after submitting their responses"
+  test "a party tries to submit responses after the response end date" do
+    @party.update!(responses_end_at: 1.day.ago)
+
+    visit root_path
+    fill_in "Reservation code", with: @party.reservation_code
+    click_button "Submit"
+
+    assert page.has_content?("Yay")
+  end
 end
