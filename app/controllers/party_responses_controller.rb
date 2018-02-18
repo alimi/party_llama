@@ -1,5 +1,6 @@
 class PartyResponsesController < ApplicationController
   include PartyAuthentication
+  include ResponseEligibilityFilter
 
   def index
     @party_responses = PartyResponses.new(Current.party)

@@ -1,5 +1,6 @@
 class DouglassMyersResponsesController < ApplicationController
   include PartyAuthentication
+  include ResponseEligibilityFilter
 
   def new
     @guests = Current.party.guests
