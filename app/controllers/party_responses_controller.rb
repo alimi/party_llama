@@ -1,6 +1,8 @@
 class PartyResponsesController < ApplicationController
+  include PartyAuthentication
+
   def index
-    @party_responses = PartyResponses.new(current_party)
+    @party_responses = PartyResponses.new(Current.party)
   end
 
   PartyResponses = Struct.new(:party) do

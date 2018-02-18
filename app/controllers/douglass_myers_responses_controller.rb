@@ -1,10 +1,12 @@
 class DouglassMyersResponsesController < ApplicationController
+  include PartyAuthentication
+
   def new
-    @guests = current_party.guests
+    @guests = Current.party.guests
   end
 
   def create
-    attending_guests = current_party.guests.where(
+    attending_guests = Current.party.guests.where(
       id: params[:douglass_myers_response][:attending_guest_ids]
     )
 
