@@ -6,7 +6,7 @@ module ResponseEligibilityFilter
   end
 
   def check_response_eligibility
-    if DateTime.current > Current.party.responses_end_at
+    if Current.party.passed_submission_deadline?
       redirect_to conclusion_path
     end
   end
