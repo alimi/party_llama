@@ -1,7 +1,10 @@
 <p>Patterson Park</p>
 
 <%= form_with scope: :patterson_park_response, url: patterson_park_responses_path do |form| %>
-  <%= form.collection_check_boxes :attending_guest_ids, @guests, :id, :name %>
+  <%= form.collection_check_boxes :attending_guest_ids, @guests, :id, :name do |b| %>
+    <%= b.check_box checked: b.object.attending_patterson_park?  %>
+    <%= b.label %>
+  <% end %>
 
   <%= form.submit "Next" %>
 <% end %>

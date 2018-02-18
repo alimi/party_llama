@@ -60,16 +60,4 @@ class PartyResponsesTest < ApplicationSystemTestCase
 
     assert page.has_content?("Yay"), "The party is sent to the conclusion."
   end
-
-  test "a party tries to edit responses after the response end date" do
-    @party.update!(responses_end_at: 1.day.ago)
-
-    visit root_path
-    fill_in "Reservation code", with: @party.reservation_code
-    click_button "Submit"
-
-    visit new_douglass_myers_responses_path
-
-    assert page.has_content?("Yay"), "The party is sent to the conclusion."
-  end
 end

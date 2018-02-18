@@ -7,11 +7,11 @@ class PattersonParkResponsesController < ApplicationController
   end
 
   def create
-    attending_guests = Current.party.guests.where(
-      id: params[:patterson_park_response][:attending_guest_ids]
+    GuestAttendance.update(
+      party: Current.party,
+      event_field: :attending_patterson_park,
+      attending_guest_ids: params[:patterson_park_response][:attending_guest_ids]
     )
-
-    attending_guests.update_all(attending_patterson_park: true)
 
     redirect_to new_douglass_myers_responses_path
   end
