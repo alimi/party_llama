@@ -1,6 +1,4 @@
-class Voice::SessionsController < ApplicationController
-  skip_before_action :verify_authenticity_token
-
+class Voice::SessionsController < Voice::ApplicationController
   def new
     render xml: VoiceXML.new(
       message: "Welcome to the wedding hotline! Please say or enter your reservation code.",

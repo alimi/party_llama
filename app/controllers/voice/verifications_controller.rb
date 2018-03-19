@@ -1,6 +1,4 @@
-class Voice::VerificationsController < ApplicationController
-  skip_before_action :verify_authenticity_token
-
+class Voice::VerificationsController < Voice::ApplicationController
   def create
     render xml: VoiceXML.new(message: "Adios!")
   end
