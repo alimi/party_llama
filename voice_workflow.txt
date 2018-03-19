@@ -1,0 +1,93 @@
+PL: Welcome to the wedding hotline! Please enter your reservation code.
+
+Guest: 42
+
+PL: Are we speaking with the Aguilar family?
+
+Guest: Yes
+
+PL: Great! Here's a summary of the wedding...
+
+PL: Give me one minute while I look up your invitations for ceremony and picnic in Patterson Park.
+
+PL: I found invitations for Freddy, Mary, Moises, Chichi, Israel, and Micah. Will everyone be attending the ceremony and picnic in Patterson Park?
+
+Option 1
+
+  Guest: Yes
+
+Option 2
+
+  Guest: No
+  
+  PL: Ok. Will Freddy be attending?
+  
+  Guest: Yes
+  
+  PL: Will Mary be attending?
+  
+  Guest: Yes
+  
+  PL: Will Moises be attending?
+  
+  Guest: No
+  
+  PL: Will Chichi be attending?
+  
+  Guest: No
+  
+  PL: Will anyone else be attending the ceremony and picnic in Patterson Park?
+  
+  Guest: No
+
+PL: Ok, got it. Let me look up your invitations for the cake reception at the Douglass-Myers Maritime Park.
+
+PL: I found invitations for Freddy, Mary, Moises, Chichi, Israel, and Micah. Will everyone be attending the cake reception at the Douglass-Myers Maritime Park?
+
+Option 1
+
+  Guest: Yes
+
+Option 2
+
+  Guest: No
+  
+  PL: Ok. Will Freddy be attending?
+  
+  Guest: Yes
+  
+  PL: Will Mary be attending?
+  
+  Guest: Yes
+  
+  PL: Will Moises be attending?
+  
+  Guest: No
+  
+  PL: Will Chichi be attending?
+  
+  Guest: No
+  
+  PL: Will anyone else be attending the ceremony and picnic in Patterson Park?
+  
+  Guest: No
+
+PL: Cool, let's go over your responses.
+
+PL: For ceremony and picnic at Patterson Park, you said 3 guests will be attending: Freddy, Mary, and Moises. For the cake reception at Douglass-Myers, you said 2 guests will be attending: Freddy and Mary.
+
+PL: Do you need to make any changes
+
+Option 1
+
+  Guest: No
+
+Option 2
+
+  Guest: Yes
+
+  Go back to Patterson Park.
+
+PL: Ok, I'll submit your responses. Thanks!
+
+Guide: https://www.twilio.com/docs/quickstart/ruby/twiml

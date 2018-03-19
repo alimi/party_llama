@@ -14,4 +14,10 @@ Rails.application.routes.draw do
   resource :patterson_park_responses, only: [:new, :create]
 
   resources :sessions, only: [:new, :create]
+
+  namespace :voice do
+    resources :sessions, only: [:new, :create] do
+      resources :verifications, only: [:create]
+    end
+  end
 end
