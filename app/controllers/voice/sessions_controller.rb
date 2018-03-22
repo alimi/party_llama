@@ -7,7 +7,8 @@ class Voice::SessionsController < Voice::ApplicationController
   end
 
   def create
-    party = Party.find_by(reservation_code: params['Digits'])
+    input = VoiceInput.new(voice_params).to_s
+    party = Party.find_by(reservation_code: input)
 
     if party
       render xml: VoiceXML.new(
@@ -20,5 +21,11 @@ class Voice::SessionsController < Voice::ApplicationController
         next_path: voice_sessions_path
       )
     end
+  end
+
+  private
+
+  def voice_params
+    params.slice("Digits", "SpeechResult", "Confidence").permit!
   end
 end
