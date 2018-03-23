@@ -6,6 +6,14 @@ class VoiceInput
     @speech = SpeechInput.new(input["SpeechResult"], input["Confidence"])
   end
 
+  def affirmative?
+    ["Yes.", "1"].include?(to_s)
+  end
+
+  def negative?
+    ["No.", "0"].include?(to_s)
+  end
+
   def to_s
     speech.to_s || digits
   end

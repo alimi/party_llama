@@ -1,10 +1,13 @@
 class Voice::VerificationsController < Voice::ApplicationController
   def create
-    input = VoiceInput.new(voice_params).to_s
+    input = VoiceInput.new(voice_params)
 
-    if ["Yes.", "1"].include?(input)
-      render xml: VoiceXML.new(message: "Yay! Smell you later!")
-    elsif ["No.", "0"].include?(input)
+    if input.affirmative?
+      render xml: VoiceXML.new(
+        next_path: voice_party_patterson_park_responses_path(party),
+        message: introductory_message
+      )
+    elsif input.negative?
       render xml: VoiceXML.new(
         next_path: voice_sessions_path,
         message: "Hmm, sorry about that. Please say or enter your reservation code."
@@ -21,6 +24,15 @@ class Voice::VerificationsController < Voice::ApplicationController
 
   def voice_params
     params.slice("Digits", "SpeechResult", "Confidence").permit!
+  end
+
+  def introductory_message
+    <<~MESSAGE
+      Yay! We're excited to hear from you!
+      There's a lot of info about the wedding. Ceremony, picnic, dancing, blah, blah, blah.
+      Give me one minute while I look up your invitations for the ceremony and picnic in Patterson Park.
+      I found invitations for #{party.guests.map(&:first_name).to_sentence}. Will everyone be attending the ceremony and picnic in Patterson Park?
+    MESSAGE
   end
 
   def party

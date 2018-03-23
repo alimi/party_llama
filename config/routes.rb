@@ -19,5 +19,9 @@ Rails.application.routes.draw do
     resources :sessions, only: [:new, :create] do
       resources :verifications, only: [:create]
     end
+
+    resources :parties, only: [] do
+      resource :patterson_park_responses, only: [:create]
+    end
   end
 end
