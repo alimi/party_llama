@@ -1,9 +1,9 @@
 class Voice::SessionsController < Voice::ApplicationController
   def new
-    render xml: VoiceXML.new(
-      message: "Welcome to the wedding hotline! Please say or enter your reservation code.",
-      next_path: voice_sessions_path
-    )
+    prefix = params[:prefix] || "Welcome to the wedding hotline!"
+    message = "#{prefix} Please say or enter your reservation code."
+
+    render xml: VoiceXML.new(message: message, next_path: voice_sessions_path)
   end
 
   def create
@@ -11,14 +11,10 @@ class Voice::SessionsController < Voice::ApplicationController
     party = Party.find_by(reservation_code: input)
 
     if party
-      render xml: VoiceXML.new(
-        next_path: voice_session_verifications_path(party),
-        message: "Are we speaking with #{party.name}?"
-      )
+      redirect_to new_voice_session_verification_path(party)
     else
-      render xml: VoiceXML.new(
-        message: "Sorry, we couldn't find your reservation. Please re-enter your reservation code.",
-        next_path: voice_sessions_path
+      redirect_to new_voice_session_path(
+        prefix: "Sorry, we couldn't find your reservation."
       )
     end
   end

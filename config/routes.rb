@@ -17,11 +17,9 @@ Rails.application.routes.draw do
 
   namespace :voice do
     resources :sessions, only: [:new, :create] do
-      resources :verifications, only: [:create]
+      resources :verifications, only: [:new, :create]
     end
 
-    resources :parties, only: [] do
-      resource :patterson_park_responses, only: [:create]
-    end
+    resource :patterson_park_responses, only: [:new, :create]
   end
 end
