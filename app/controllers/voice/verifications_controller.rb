@@ -14,7 +14,7 @@ class Voice::VerificationsController < Voice::ApplicationController
 
     if input.affirmative?
       session[:current_party_id] = party.id
-      redirect_to new_voice_patterson_park_responses_path
+      redirect_to new_voice_patterson_park_response_path
     elsif input.negative?
       redirect_to new_voice_session_path(prefix: "Hmm, sorry about that.")
     else

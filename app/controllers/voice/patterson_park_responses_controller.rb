@@ -13,11 +13,14 @@ class Voice::PattersonParkResponsesController < Voice::ApplicationController
     input = VoiceInput.new(voice_params)
 
     if input.affirmative?
+      party.guests.update_all(attending_patterson_park: true)
       render xml: VoiceXML.new(message: "Yay! Smell you later!")
     elsif input.negative?
-      render xml: VoiceXML.new(message: "Boo. You stinky.")
+      redirect_to new_voice_patterson_park_guest_response_path(
+        prefix: "Ok, no worries. We'll confirm everyone individually."
+      )
     else
-      redirect_to new_voice_patterson_park_responses_path(
+      redirect_to new_voice_patterson_park_response_path(
         prefix: "Sorry, I didn't understand you."
       )
     end
