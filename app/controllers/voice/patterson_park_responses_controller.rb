@@ -14,7 +14,7 @@ class Voice::PattersonParkResponsesController < Voice::ApplicationController
 
     if input.affirmative?
       party.guests.update_all(attending_patterson_park: true)
-      render xml: VoiceXML.new(message: "Yay! Smell you later!")
+      redirect_to new_voice_douglass_myers_response_path
     elsif input.negative?
       redirect_to new_voice_patterson_park_guest_response_path(
         prefix: "Ok, no worries. We'll confirm everyone individually."

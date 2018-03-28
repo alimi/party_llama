@@ -1,12 +1,12 @@
-class Voice::PattersonParkGuestResponsesController < Voice::ApplicationController
+class Voice::DouglassMyersGuestResponsesController < Voice::ApplicationController
   def new
     guest = current_guest || next_guest
 
-    message = "#{params[:prefix]} Will #{guest.first_name} be attending the picnic and ceremony in Patterson Park?"
+    message = "#{params[:prefix]} Will #{guest.first_name} be attending the cake reception at the Douglass-Myers Maritime Park?"
 
     render xml: VoiceXML.new(
       message: message,
-      next_path:  voice_patterson_park_guest_responses_path(guest_id: guest.id)
+      next_path: voice_douglass_myers_guest_responses_path(guest_id: guest.id)
     )
   end
 
@@ -16,7 +16,7 @@ class Voice::PattersonParkGuestResponsesController < Voice::ApplicationControlle
     if input.affirmative? || input.negative?
       update_guest_attendance(input)
     else
-      redirect_to new_voice_patterson_park_guest_response_path(
+      redirect_to new_voice_douglass_myers_guest_response_path(
         prefix: "Sorry, I didn't understand you.",
         guest_id: current_guest.id
       )
@@ -26,14 +26,14 @@ class Voice::PattersonParkGuestResponsesController < Voice::ApplicationControlle
   private
 
   def update_guest_attendance(input)
-    current_guest.update!(attending_patterson_park: input.affirmative?)
+    current_guest.update!(attending_douglass_myers: input.affirmative?)
 
     if next_guest.present?
-      redirect_to new_voice_patterson_park_guest_response_path(
+      redirect_to new_voice_douglass_myers_guest_response_path(
         guest_id: next_guest.id
       )
     else
-      redirect_to new_voice_douglass_myers_response_path
+      render xml: VoiceXML.new(message: "Yay! Smell you later!")
     end
   end
 

@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create]
 
   namespace :voice do
+    resources :douglass_myers_responses, only: [:new, :create]
+
+    resources :douglass_myers_guest_responses, only: [:new, :create]
+
     resources :patterson_park_responses, only: [:new, :create]
 
     resources :patterson_park_guest_responses, only: [:new, :create]
