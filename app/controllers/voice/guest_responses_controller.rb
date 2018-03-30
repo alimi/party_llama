@@ -1,4 +1,5 @@
 class Voice::GuestResponsesController < Voice::ApplicationController
+  include Voiceable
   include Venueable
   include PartyAuthentication
 
@@ -14,10 +15,8 @@ class Voice::GuestResponsesController < Voice::ApplicationController
   end
 
   def create
-    input = VoiceInput.new(voice_params)
-
-    if input.affirmative? || input.negative?
-      update_guest_attendance(input)
+    if voice_input.affirmative? || voice_input.negative?
+      update_guest_attendance
     else
       redirect_to venue_path(
         :new_voice_guest_response_path,
@@ -29,8 +28,8 @@ class Voice::GuestResponsesController < Voice::ApplicationController
 
   private
 
-  def update_guest_attendance(input)
-    current_guest.update!(venue_attendance_field => input.affirmative?)
+  def update_guest_attendance
+    current_guest.update!(venue_attendance_field => voice_input.affirmative?)
 
     if next_guest.present?
       redirect_to venue_path(
@@ -54,9 +53,5 @@ class Voice::GuestResponsesController < Voice::ApplicationController
 
   def current_guest
     @current_guest ||= Current.party.guests.find_by(id: params[:guest_id])
-  end
-
-  def voice_params
-    params.slice("Digits", "SpeechResult", "Confidence").permit!
   end
 end

@@ -1,4 +1,6 @@
 class Voice::VerificationsController < Voice::ApplicationController
+  include Voiceable
+
   def new
     prefix = params[:prefix] || ""
     message = "#{prefix} Are we speaking with #{party.name}?"
@@ -10,12 +12,10 @@ class Voice::VerificationsController < Voice::ApplicationController
   end
 
   def create
-    input = VoiceInput.new(voice_params)
-
-    if input.affirmative?
+    if voice_input.affirmative?
       session[:current_party_id] = party.id
       redirect_to new_voice_party_response_path(venue: "patterson_park")
-    elsif input.negative?
+    elsif voice_input.negative?
       redirect_to new_voice_session_path(prefix: "Hmm, sorry about that.")
     else
       redirect_to new_voice_session_verification_path(
@@ -26,10 +26,6 @@ class Voice::VerificationsController < Voice::ApplicationController
   end
 
   private
-
-  def voice_params
-    params.slice("Digits", "SpeechResult", "Confidence").permit!
-  end
 
   def party
     @party ||= Party.find(params[:session_id])

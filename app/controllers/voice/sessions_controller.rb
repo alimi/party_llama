@@ -1,4 +1,6 @@
 class Voice::SessionsController < Voice::ApplicationController
+  include Voiceable
+
   def new
     prefix = params[:prefix] || "Welcome to the wedding hotline!"
     message = "#{prefix} Please say or enter your reservation code."
@@ -7,8 +9,7 @@ class Voice::SessionsController < Voice::ApplicationController
   end
 
   def create
-    input = VoiceInput.new(voice_params).to_s
-    party = Party.find_by(reservation_code: input)
+    party = Party.find_by(reservation_code: voice_input.to_s)
 
     if party
       redirect_to new_voice_session_verification_path(party)
@@ -17,11 +18,5 @@ class Voice::SessionsController < Voice::ApplicationController
         prefix: "Sorry, we couldn't find your reservation."
       )
     end
-  end
-
-  private
-
-  def voice_params
-    params.slice("Digits", "SpeechResult", "Confidence").permit!
   end
 end
