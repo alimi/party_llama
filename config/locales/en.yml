@@ -31,3 +31,19 @@
 
 en:
   hello: "Hello world"
+
+  voice:
+    guest_responses:
+      new:
+        patterson_park:
+          message: "%{prefix} Will %{name} be attending the picnic and ceremony in Patterson Park?"
+        douglass_myers:
+          message: "%{prefix} Will %{name} be attending the cake reception at the Douglass-Myers Maritime Park?"
+    party_responses:
+      new:
+        patterson_park:
+          intro: "Yay! We're excited to hear from you! There's a lot of info about the wedding. Ceremony, picnic, dancing, blah, blah, blah. Give me one minute while I look up your invitations for the ceremony and picnic in Patterson Park. I found invitations for %{guests}."
+          message: "%{prefix} Will everyone be attending the ceremony and picnic in Patterson Park?"
+        douglass_myers:
+          intro: "Great! Now, we'll move on to the cake reception at the Douglass-Myers Maritime Park. I found invitations for %{guests}."
+          message: "%{prefix} Will everyone be attending the cake reception at the Douglass-Myers Maritime Park?"

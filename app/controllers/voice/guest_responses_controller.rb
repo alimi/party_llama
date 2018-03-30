@@ -1,12 +1,14 @@
-class Voice::DouglassMyersGuestResponsesController < Voice::ApplicationController
+class Voice::GuestResponsesController < Voice::ApplicationController
+  include Venueable
+
   def new
     guest = current_guest || next_guest
 
-    message = "#{params[:prefix]} Will #{guest.first_name} be attending the cake reception at the Douglass-Myers Maritime Park?"
+    message = venue_translation("message", prefix: params[:prefix], name: guest.first_name)
 
     render xml: VoiceXML.new(
       message: message,
-      next_path: voice_douglass_myers_guest_responses_path(guest_id: guest.id)
+      next_path: venue_path(:voice_guest_responses_path, guest_id: guest.id)
     )
   end
 
@@ -16,7 +18,8 @@ class Voice::DouglassMyersGuestResponsesController < Voice::ApplicationControlle
     if input.affirmative? || input.negative?
       update_guest_attendance(input)
     else
-      redirect_to new_voice_douglass_myers_guest_response_path(
+      redirect_to venue_path(
+        :new_voice_guest_response_path,
         prefix: "Sorry, I didn't understand you.",
         guest_id: current_guest.id
       )
@@ -26,14 +29,15 @@ class Voice::DouglassMyersGuestResponsesController < Voice::ApplicationControlle
   private
 
   def update_guest_attendance(input)
-    current_guest.update!(attending_douglass_myers: input.affirmative?)
+    current_guest.update!(venue_attendance_field => input.affirmative?)
 
     if next_guest.present?
-      redirect_to new_voice_douglass_myers_guest_response_path(
+      redirect_to venue_path(
+        :new_voice_guest_response_path,
         guest_id: next_guest.id
       )
     else
-      render xml: VoiceXML.new(message: "Yay! Smell you later!")
+      complete_venue_responses
     end
   end
 

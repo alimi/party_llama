@@ -16,13 +16,10 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create]
 
   namespace :voice do
-    resources :douglass_myers_responses, only: [:new, :create]
-
-    resources :douglass_myers_guest_responses, only: [:new, :create]
-
-    resources :patterson_park_responses, only: [:new, :create]
-
-    resources :patterson_park_guest_responses, only: [:new, :create]
+    scope "/:venue", constraints: VenueConstraint.new do
+      resources :party_responses, only: [:new, :create]
+      resources :guest_responses, only: [:new, :create]
+    end
 
     resources :sessions, only: [:new, :create] do
       resources :verifications, only: [:new, :create]
