@@ -1,10 +1,11 @@
 class Voice::PartyResponsesController < Voice::ApplicationController
   include Venueable
+  include PartyAuthentication
 
   def new
     prefix = params[:prefix] || venue_translation(
       "intro",
-      guests: party.guests.map(&:first_name).to_sentence
+      guests: Current.party.guests.map(&:first_name).to_sentence
     )
 
     render xml: VoiceXML.new(
@@ -17,7 +18,7 @@ class Voice::PartyResponsesController < Voice::ApplicationController
     input = VoiceInput.new(voice_params)
 
     if input.affirmative?
-      party.guests.update_all(venue_attendance_field => true)
+      Current.party.guests.update_all(venue_attendance_field => true)
       complete_venue_responses
     elsif input.negative?
       redirect_to venue_path(
@@ -36,9 +37,5 @@ class Voice::PartyResponsesController < Voice::ApplicationController
 
   def voice_params
     params.slice("Digits", "SpeechResult", "Confidence").permit!
-  end
-
-  def party
-    @party ||= Party.find(session[:current_party_id])
   end
 end

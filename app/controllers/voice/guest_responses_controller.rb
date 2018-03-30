@@ -1,5 +1,6 @@
 class Voice::GuestResponsesController < Voice::ApplicationController
   include Venueable
+  include PartyAuthentication
 
   def new
     guest = current_guest || next_guest
@@ -45,18 +46,14 @@ class Voice::GuestResponsesController < Voice::ApplicationController
     return @next_guest if defined? @next_guest
 
     if current_guest.present?
-      @next_guest = party.guests.where("id > ?", current_guest.id).order(:id).first
+      @next_guest = Current.party.guests.where("id > ?", current_guest.id).order(:id).first
     else
-      @next_guest = party.guests.order(:id).first
+      @next_guest = Current.party.guests.order(:id).first
     end
   end
 
   def current_guest
-    @current_guest ||= party.guests.find_by(id: params[:guest_id])
-  end
-
-  def party
-    @party ||= Party.find(session[:current_party_id])
+    @current_guest ||= Current.party.guests.find_by(id: params[:guest_id])
   end
 
   def voice_params

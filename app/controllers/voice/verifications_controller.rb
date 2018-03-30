@@ -19,7 +19,7 @@ class Voice::VerificationsController < Voice::ApplicationController
       redirect_to new_voice_session_path(prefix: "Hmm, sorry about that.")
     else
       redirect_to new_voice_session_verification_path(
-        party,
+        Current.party,
         prefix: "Sorry, I didn't understand you."
       )
     end
