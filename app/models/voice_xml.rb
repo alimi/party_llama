@@ -19,7 +19,7 @@ class VoiceXML
   def continuing_xml
     response = Twilio::TwiML::VoiceResponse.new do |response|
       response.gather action: next_path, input: "dtmf speech" do |gather|
-        gather.say message
+        gather.say message, voice: "alice", language: "en-US"
       end
     end
 
@@ -28,7 +28,7 @@ class VoiceXML
 
   def finishing_xml
     response = Twilio::TwiML::VoiceResponse.new do |response|
-      response.say message
+      response.say message, voice: "alice", language: "en-US"
       response.hangup
     end
 
