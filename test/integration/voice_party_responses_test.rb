@@ -59,6 +59,13 @@ class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
     post_to_next_path params: { "SpeechResult" => "No.", "Confidence" => ".9" }
 
     assert_match(
+      /go over.*Is this correct/,
+      xml_response.Response.Gather.Say.content
+    )
+
+    post_to_next_path params: { "SpeechResult" => "Yes.", "Confidence" => ".9" }
+
+    assert_match(
       /everyone.*attending.*Douglass-Myers/,
       xml_response.Response.Gather.Say.content
     )

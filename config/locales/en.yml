@@ -33,6 +33,13 @@ en:
   hello: "Hello world"
 
   voice:
+    guest_response_confirmations:
+      new:
+        message: "You replied yes for %{attending_guests}, and you replied no for %{not_attending_guests}. Is this correct?"
+        patterson_park:
+          prefix: Let's go over your responses for the picnic and ceremony at Patterson Park.
+        douglass_myers:
+          prefix: Let's go over your responses for the cake reception at the Douglass-Myers Maritime Park.
     guest_responses:
       new:
         patterson_park:

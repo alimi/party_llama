@@ -37,7 +37,10 @@ class Voice::GuestResponsesController < Voice::ApplicationController
         guest_id: next_guest.id
       )
     else
-      complete_venue_responses
+      redirect_to venue_path(
+        :new_voice_guest_response_confirmation_path,
+        party: Current.party
+      )
     end
   end
 

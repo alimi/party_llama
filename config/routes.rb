@@ -17,8 +17,11 @@ Rails.application.routes.draw do
 
   namespace :voice do
     scope "/:venue", constraints: VenueConstraint.new do
-      resources :party_responses, only: [:new, :create]
       resources :guest_responses, only: [:new, :create]
+
+      resources :guest_response_confirmations, only: [:new, :create]
+
+      resources :party_responses, only: [:new, :create]
     end
 
     resources :sessions, only: [:new, :create] do
