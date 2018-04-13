@@ -12,6 +12,7 @@ module Venueable
     if params[:venue] == "patterson_park"
       redirect_to new_voice_party_response_path(venue: "douglass_myers")
     else
+      Current.party.update!(responses_submitted_at: DateTime.current)
       render xml: VoiceXML.new(message: "Yay! Smell you later!")
     end
   end
