@@ -1,9 +1,10 @@
 class VoiceXML
-  attr_reader :message, :next_path
+  attr_reader :message, :next_path, :expect
 
-  def initialize(message:, next_path: nil)
+  def initialize(message:, next_path: nil, expect: nil)
     @message = message
     @next_path = next_path
+    @expect = expect || ""
   end
 
   def to_xml(options = {})
@@ -18,7 +19,7 @@ class VoiceXML
 
   def continuing_xml
     response = Twilio::TwiML::VoiceResponse.new do |response|
-      response.gather action: next_path, input: "dtmf speech" do |gather|
+      response.gather action: next_path, input: "dtmf speech", hints: expect do |gather|
         gather.say message, voice: "alice", language: "en-US"
       end
     end

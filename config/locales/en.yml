@@ -30,7 +30,21 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  affirmative_words: &affirmative_words
+    - "yes"
+    - yeah
+    - yea
+    - ya
+    - yep
+    - yawp
+  negative_words: &negative_words
+    - "no"
+    - nope
+    - nah
+    - na
+  affirmative_and_negative_words:
+    - *affirmative_words
+    - *negative_words
 
   voice:
     guest_response_confirmations:

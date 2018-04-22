@@ -15,7 +15,8 @@ class Voice::GuestResponseConfirmationsController < Voice::ApplicationController
 
     render xml: VoiceXML.new(
       message: message,
-      next_path: venue_path(:voice_guest_response_confirmations_path)
+      next_path: venue_path(:voice_guest_response_confirmations_path),
+      expect: AffirmativeAndNegativeWords.to_s
     )
   end
 

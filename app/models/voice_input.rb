@@ -7,11 +7,13 @@ class VoiceInput
   end
 
   def affirmative?
-    ["Yes.", "1"].include?(to_s)
+    options = I18n.translate(:affirmative_words) + ["1"]
+    options.include?(to_s)
   end
 
   def negative?
-    ["No.", "2"].include?(to_s)
+    options = I18n.translate(:negative_words) + ["2"]
+    options.include?(to_s)
   end
 
   def to_s
@@ -21,7 +23,7 @@ class VoiceInput
   SpeechInput = Struct.new(:speech, :confidence) do
     def to_s
       if confidence.to_f > 0.7
-        speech
+        speech.tr("().", "").downcase
       else
         nil
       end

@@ -17,7 +17,8 @@ class Voice::PartyResponsesController < Voice::ApplicationController
 
     render xml: VoiceXML.new(
       message: message,
-      next_path: venue_path(:voice_party_responses_path)
+      next_path: venue_path(:voice_party_responses_path),
+      expect: AffirmativeAndNegativeWords.to_s
     )
   end
 

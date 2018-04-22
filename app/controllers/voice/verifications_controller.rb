@@ -7,7 +7,8 @@ class Voice::VerificationsController < Voice::ApplicationController
 
     render xml: VoiceXML.new(
       message: message,
-      next_path: voice_session_verifications_path(party)
+      next_path: voice_session_verifications_path(party),
+      expect: AffirmativeAndNegativeWords.to_s
     )
   end
 
@@ -19,7 +20,7 @@ class Voice::VerificationsController < Voice::ApplicationController
       redirect_to new_voice_session_path(prefix: "Hmm, sorry about that.")
     else
       redirect_to new_voice_session_verification_path(
-        Current.party,
+        party.id,
         prefix: "Sorry, I didn't understand you."
       )
     end
