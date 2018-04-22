@@ -68,7 +68,7 @@ en:
             one: "%{prefix} Will you be attending the ceremony and picnic in Patterson Park?"
             other: "%{prefix} Will everyone be attending the ceremony and picnic in Patterson Park?"
         douglass_myers:
-          intro: "Great! Now, we'll move on to the cake reception at the Douglass-Myers Maritime Park. I found invitations for %{guests}."
+          intro: "Great! Now, we'll move on to the cake reception at the Douglass-Myers Maritime Park. I an found invitation for %{guests}."
           message:
             one: "%{prefix} Will you be attending the cake reception at the Douglass-Myers Maritime Park?"
             other: "%{prefix} Will everyone be attending the cake reception at the Douglass-Myers Maritime Park?"
