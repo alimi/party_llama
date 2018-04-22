@@ -11,7 +11,7 @@ class VoiceInput
   end
 
   def negative?
-    ["No.", "0"].include?(to_s)
+    ["No.", "2"].include?(to_s)
   end
 
   def to_s
