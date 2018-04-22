@@ -8,4 +8,16 @@ class Party < ApplicationRecord
       responses_end_at && responses_end_at < DateTime.current
     end
   end
+
+  def name
+    if single?
+      guests.first.name
+    else
+      super
+    end
+  end
+
+  def single?
+    guests.count == 1
+  end
 end

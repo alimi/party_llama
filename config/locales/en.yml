@@ -49,8 +49,12 @@ en:
     party_responses:
       new:
         patterson_park:
-          intro: "Yay! We're excited to hear from you! There's a lot of info about the wedding. Ceremony, picnic, dancing, blah, blah, blah. Give me one minute while I look up your invitations for the ceremony and picnic in Patterson Park. I found invitations for %{guests}."
-          message: "%{prefix} Will everyone be attending the ceremony and picnic in Patterson Park?"
+          intro: "Yay! We're excited to hear from you! There's a lot of info about the wedding. Ceremony, picnic, dancing, blah, blah, blah. Give me one minute while I look up your invitation for the ceremony and picnic in Patterson Park. I found an invitation for %{guests}."
+          message:
+            one: "%{prefix} Will you be attending the ceremony and picnic in Patterson Park?"
+            other: "%{prefix} Will everyone be attending the ceremony and picnic in Patterson Park?"
         douglass_myers:
           intro: "Great! Now, we'll move on to the cake reception at the Douglass-Myers Maritime Park. I found invitations for %{guests}."
-          message: "%{prefix} Will everyone be attending the cake reception at the Douglass-Myers Maritime Park?"
+          message:
+            one: "%{prefix} Will you be attending the cake reception at the Douglass-Myers Maritime Park?"
+            other: "%{prefix} Will everyone be attending the cake reception at the Douglass-Myers Maritime Park?"
