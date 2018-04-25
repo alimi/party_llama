@@ -126,6 +126,38 @@ class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
     )
   end
 
+  test "a party tries to submit responses after their end date" do
+    party = Party.create!(
+      name: "Justice League",
+      reservation_code: "987654",
+      responses_end_at: 1.week.ago
+    )
+
+    get new_voice_session_path
+
+    assert_includes(
+      xml_response.Response.Gather.Say.content,
+      "enter your reservation code"
+    )
+
+    post_to_next_path params: { "Digits" => party.reservation_code }
+
+    assert_includes(
+      xml_response.Response.Gather.Say.content,
+      "Are we speaking with Justice League?"
+    )
+
+    post_to_next_path(
+      params: { "SpeechResult" => "Yes.", "Confidence" => ".9" },
+      follow_redirect: false
+    )
+
+    assert_match(
+      /Sorry/,
+      xml_response.Response.Say.content
+    )
+  end
+
   def post_to_next_path(options = {})
     follow_redirect = options.delete(:follow_redirect) { true }
     post xml_response.Response.Gather["action"], options
