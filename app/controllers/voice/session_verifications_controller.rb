@@ -1,13 +1,14 @@
-class Voice::VerificationsController < Voice::ApplicationController
+class Voice::SessionVerificationsController < Voice::ApplicationController
   include Voiceable
+  include PartyAuthentication
 
   def new
     prefix = params[:prefix] || ""
-    message = "#{prefix} Are we speaking with #{party.name}?"
+    message = "#{prefix} Are we speaking with #{Current.party.name}?"
 
     render xml: VoiceXML.new(
       message: message,
-      next_path: voice_session_verifications_path(party),
+      next_path: voice_session_verifications_path,
       expect: AffirmativeAndNegativeWords.to_s
     )
   end
@@ -19,7 +20,7 @@ class Voice::VerificationsController < Voice::ApplicationController
       redirect_to new_voice_session_path(prefix: "Hmm, sorry about that.")
     else
       redirect_to new_voice_session_verification_path(
-        party.id,
+        Current.party.id,
         prefix: "Sorry, I didn't understand you."
       )
     end
@@ -28,17 +29,14 @@ class Voice::VerificationsController < Voice::ApplicationController
   private
 
   def process_verification
-    if party.passed_submission_deadline?
+    if Current.party.passed_submission_deadline?
+      session.delete(:current_party_id)
+
       render xml: VoiceXML.new(
         message: translate(".passed_submission_deadline")
       )
     else
-      session[:current_party_id] = party.id
       redirect_to new_voice_party_response_path(venue: "patterson_park")
     end
-  end
-
-  def party
-    @party ||= Party.find(params[:session_id])
   end
 end

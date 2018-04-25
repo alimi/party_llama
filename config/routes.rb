@@ -24,8 +24,7 @@ Rails.application.routes.draw do
       resources :party_responses, only: [:new, :create]
     end
 
-    resources :sessions, only: [:new, :create] do
-      resources :verifications, only: [:new, :create]
-    end
+    resources :sessions, only: [:new, :create]
+    resources :session_verifications, only: [:new, :create]
   end
 end

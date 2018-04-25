@@ -16,7 +16,8 @@ class Voice::SessionsController < Voice::ApplicationController
     party = Party.find_by(reservation_code: voice_input.to_s)
 
     if party
-      redirect_to new_voice_session_verification_path(party)
+      session[:current_party_id] = party.id
+      redirect_to new_voice_session_verification_path
     else
       redirect_to new_voice_session_path(
         prefix: "Sorry, we couldn't find your reservation."

@@ -158,6 +158,28 @@ class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
     )
   end
 
+  test "a party tries to submit responses with an invalid reservation code" do
+    party = Party.create!(
+      name: "Justice League",
+      reservation_code: "536631",
+      responses_end_at: 1.week.from_now
+    )
+
+    get new_voice_session_path
+
+    assert_includes(
+      xml_response.Response.Gather.Say.content,
+      "enter your reservation code"
+    )
+
+    post_to_next_path params: { "Digits" => "very wrong" }
+
+    assert_match(
+      /Sorry.*say or enter.*reservation code/,
+      xml_response.Response.Gather.Say.content
+    )
+  end
+
   def post_to_next_path(options = {})
     follow_redirect = options.delete(:follow_redirect) { true }
     post xml_response.Response.Gather["action"], options

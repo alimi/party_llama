@@ -72,6 +72,6 @@ en:
           message:
             one: "%{prefix} Will you be attending the cake reception at the Douglass-Myers Maritime Park?"
             other: "%{prefix} Will everyone be attending the cake reception at the Douglass-Myers Maritime Park?"
-    verifications:
+    session_verifications:
       create:
         passed_submission_deadline: "Sorry, we're no longer accepting responses your party. Good bye."
