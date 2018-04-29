@@ -15,6 +15,10 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create]
 
+  namespace :admin do
+    resources :parties, only: [:index, :new, :create]
+  end
+
   namespace :voice do
     scope "/:venue", constraints: VenueConstraint.new do
       resources :guest_responses, only: [:new, :create]
@@ -25,6 +29,7 @@ Rails.application.routes.draw do
     end
 
     resources :sessions, only: [:new, :create]
+
     resources :session_verifications, only: [:new, :create]
   end
 end
