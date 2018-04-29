@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create]
 
   namespace :admin do
-    resources :parties, only: [:index, :new, :create]
+    resources :parties, only: [:index, :new, :create] do
+      resources :guests, only: [:index, :new, :create]
+    end
   end
 
   namespace :voice do

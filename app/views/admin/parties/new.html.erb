@@ -1,0 +1,17 @@
+<h2>Add Party</h2>
+
+<%= form_for [:admin, @party] do |party_form| %>
+  <ul>
+    <li>
+      <%= party_form.label :name %>
+      <%= party_form.text_field :name %>
+    </li>
+
+    <li>
+      <%= party_form.label :responses_end_at, "Responses End At (UTC)" %>
+      <%= party_form.datetime_select :responses_end_at %>
+    </li>
+  </ul>
+
+  <%= party_form.submit %>
+<% end %>

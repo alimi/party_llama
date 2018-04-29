@@ -1,0 +1,25 @@
+<h2><%= @party.name %> Guests</h2>
+
+<p><%= link_to "Add Guest", new_admin_party_guest_path(@party) %></p>
+
+<% if @party.guests.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @party.guests.each do |guest| %>
+        <tr>
+          <td><%= guest.first_name %></td>
+          <td><%= guest.last_name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<p><%= link_to "View Parties", admin_parties_path %></p>
