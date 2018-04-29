@@ -1,1 +1,59 @@
-Hi!
+<h2>Guest Summary</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Invited</th>
+      <th>Attending Patterson Park</th>
+      <th>Attending Douglass-Myers</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><%= @invited_guest_count %></td>
+      <td><%= @attending_patterson_park_count %></td>
+      <td><%= @attending_douglass_myers_count %></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Parties</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Guests</th>
+      <th>Responded?</th>
+      <th>Responses Accepted Until</th>
+      <th>Attending Patterson Park</th>
+      <th>Attending Douglass-Myers</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @parties.each do |party| %>
+      <tr>
+        <td><%= party.name %></td>
+        <td><%= party.guests.map(&:first_name).to_sentence %></td>
+        <td><%= party.responses_submitted_at.present? %></td>
+        <td><%= party.responses_end_at %></td>
+        <td>
+          <% if party.responses_submitted_at.present? %>
+            <%= party.guests.select(&:attending_patterson_park?).size %>
+          <% else %>
+            🤷‍♀️
+          <% end %>
+        </td>
+        <td>
+          <% if party.responses_submitted_at.present? %>
+            <%= party.guests.select(&:attending_douglass_myers?).size %>
+          <% else %>
+            🤷‍♀️
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
