@@ -1,0 +1,15 @@
+<%= form_for [:admin, guest.party, guest] do |guest_form| %>
+  <ul>
+    <li>
+      <%= guest_form.label(:first_name) %>
+      <%= guest_form.text_field(:first_name) %>
+    </li>
+
+    <li>
+      <%= guest_form.label(:last_name) %>
+      <%= guest_form.text_field(:last_name) %>
+    </li>
+  </ul>
+
+  <%= guest_form.submit %>
+<% end %>

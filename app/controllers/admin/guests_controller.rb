@@ -8,10 +8,21 @@ class Admin::GuestsController < ApplicationController
   end
 
   def new
+    @guest = @party.guests.new
   end
 
   def create
     @party.guests.create!(guest_params)
+    redirect_to admin_party_guests_path(@party)
+  end
+
+  def edit
+    @guest = @party.guests.find(params[:id])
+  end
+
+  def update
+    guest = @party.guests.find(params[:id])
+    guest.update!(guest_params)
     redirect_to admin_party_guests_path(@party)
   end
 

@@ -37,8 +37,13 @@
   <tbody>
     <% @parties.each do |party| %>
       <tr>
-        <td><%= party.name %></td>
-        <td><%= party.guests.map(&:first_name).to_sentence %></td>
+        <td><%= link_to party.name, edit_admin_party_path(party) %></td>
+        <td>
+          <%=
+            link_to party.guests.map(&:first_name).to_sentence,
+              admin_party_guests_path(party)
+            %>
+        </td>
         <td><%= party.responses_submitted_at.present? %></td>
         <td><%= party.responses_end_at %></td>
         <td>

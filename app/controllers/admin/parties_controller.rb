@@ -28,6 +28,16 @@ class Admin::PartiesController < ApplicationController
     redirect_to admin_party_guests_path(party)
   end
 
+  def edit
+    @party = Party.includes(:guests).find(params[:id])
+  end
+
+  def update
+    party = Party.find(params[:id])
+    party.update!(party_params)
+    redirect_to admin_parties_path
+  end
+
   private
 
   def party_params

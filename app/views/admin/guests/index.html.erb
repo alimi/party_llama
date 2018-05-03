@@ -8,6 +8,7 @@
       <tr>
         <th>First Name</th>
         <th>Last Name</th>
+        <th>Actions</th>
       </tr>
     </thead>
 
@@ -16,6 +17,9 @@
         <tr>
           <td><%= guest.first_name %></td>
           <td><%= guest.last_name %></td>
+          <td>
+            <%= link_to "Edit", edit_admin_party_guest_path(@party, guest) %>
+          </td>
         </tr>
       <% end %>
     </tbody>
