@@ -31,7 +31,7 @@ class Voice::PartyResponsesController < Voice::ApplicationController
     else
       redirect_to venue_path(
         :new_voice_party_response_path,
-        prefix: "Sorry, I didn't understand you."
+        prefix: translate("voice.unclear_speech")
       )
     end
   end
@@ -45,7 +45,7 @@ class Voice::PartyResponsesController < Voice::ApplicationController
     else
       redirect_to venue_path(
         :new_voice_guest_response_path,
-        prefix: "Ok, no worries. We'll confirm everyone individually."
+        prefix: translate(".transition")
       )
     end
   end

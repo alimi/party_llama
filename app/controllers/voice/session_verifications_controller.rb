@@ -3,8 +3,11 @@ class Voice::SessionVerificationsController < Voice::ApplicationController
   include PartyAuthentication
 
   def new
-    prefix = params[:prefix] || ""
-    message = "#{prefix} Are we speaking with #{Current.party.name}?"
+    message = translate(
+      ".message",
+      party: Current.party.name,
+      prefix: params[:prefix]
+    )
 
     render xml: VoiceXML.new(
       message: message,
@@ -17,11 +20,11 @@ class Voice::SessionVerificationsController < Voice::ApplicationController
     if voice_input.affirmative?
       process_verification
     elsif voice_input.negative?
-      redirect_to new_voice_session_path(prefix: "Hmm, sorry about that.")
+      redirect_to new_voice_session_path(prefix: translate(".wrong_party"))
     else
       redirect_to new_voice_session_verification_path(
         Current.party.id,
-        prefix: "Sorry, I didn't understand you."
+        prefix: translate("voice.unclear_speech")
       )
     end
   end

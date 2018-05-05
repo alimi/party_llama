@@ -14,9 +14,9 @@ class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
 
     get new_voice_session_path
 
-    assert_includes(
-      xml_response.Response.Gather.Say.content,
-      "enter your reservation code"
+    assert_match(
+      /enter your.*reservation code/,
+      xml_response.Response.Gather.Say.content
     )
 
     post_to_next_path params: { "Digits" => party.reservation_code }
@@ -74,7 +74,7 @@ class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
     )
 
     assert_match(
-      /Yay!/,
+      /Thanks.*!/,
       xml_response.Response.Say.content
     )
   end
@@ -89,9 +89,9 @@ class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
 
     get new_voice_session_path
 
-    assert_includes(
-      xml_response.Response.Gather.Say.content,
-      "enter your reservation code"
+    assert_match(
+      /enter your.*reservation code/,
+      xml_response.Response.Gather.Say.content
     )
 
     post_to_next_path params: { "Digits" => party.reservation_code }
@@ -121,7 +121,7 @@ class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
     )
 
     assert_match(
-      /Yay!/,
+      /Thanks.*!/,
       xml_response.Response.Say.content
     )
   end
@@ -135,9 +135,9 @@ class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
 
     get new_voice_session_path
 
-    assert_includes(
-      xml_response.Response.Gather.Say.content,
-      "enter your reservation code"
+    assert_match(
+      /enter your.*reservation code/,
+      xml_response.Response.Gather.Say.content
     )
 
     post_to_next_path params: { "Digits" => party.reservation_code }
@@ -167,9 +167,9 @@ class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
 
     get new_voice_session_path
 
-    assert_includes(
-      xml_response.Response.Gather.Say.content,
-      "enter your reservation code"
+    assert_match(
+      /enter your.*reservation code/,
+      xml_response.Response.Gather.Say.content
     )
 
     post_to_next_path params: { "Digits" => "very wrong" }

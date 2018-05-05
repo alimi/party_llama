@@ -20,4 +20,11 @@ class Party < ApplicationRecord
   def single?
     guests.count == 1
   end
+
+  def attending?
+    guests.
+      where(attending_patterson_park: true).
+      or(guests.where(attending_douglass_myers: true)).
+      any?
+  end
 end

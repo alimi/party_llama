@@ -1,93 +1,57 @@
-PL: Welcome to the wedding hotline! Please enter your reservation code.
+Voice Recording:
 
-Guest: 42
+  Hi, this is Ali and this is Tasha. Welcome to our wedding hotline! <instrumental>
 
-PL: Are we speaking with the Aguilar family?
+  Tasha: In a few moments you'll be connected to our automated assistant, Alisha. She'll walk you through the R.S.V.P. process.
 
-Guest: Yes
+  Ali: Sorry in advance if Alisha butchers your name! I tried teaching her how to say it but you know, computers.
 
-PL: Great! Here's a summary of the wedding...
+Alisha: Hi, I'm Alisha. To get started, please say or enter your six digit reservation code.
 
-PL: Give me one minute while I look up your invitations for ceremony and picnic in Patterson Park.
+Party: 1 2 3 4 5 6
 
-PL: I found invitations for Freddy, Mary, Moises, Chichi, Israel, and Micah. Will everyone be attending the ceremony and picnic in Patterson Park?
+[Party Llama can't find party]
 
-Option 1
+Alisha: Sorry, we couldn't find your reservation. Please say or enter your six digit reservation code.
 
-  Guest: Yes
+[Party Llama finds party]
 
-Option 2
+Alisha: Are we speaking with the Aguilars?
 
-  Guest: No
-  
-  PL: Ok. Will Freddy be attending?
-  
-  Guest: Yes
-  
-  PL: Will Mary be attending?
-  
-  Guest: Yes
-  
-  PL: Will Moises be attending?
-  
-  Guest: No
-  
-  PL: Will Chichi be attending?
-  
-  Guest: No
-  
-  PL: Will anyone else be attending the ceremony and picnic in Patterson Park?
-  
-  Guest: No
+[?]
 
-PL: Ok, got it. Let me look up your invitations for the cake reception at the Douglass-Myers Maritime Park.
+Alisha: Sorry, I didn't understand you. Are we speaking with the Aguilars?
 
-PL: I found invitations for Freddy, Mary, Moises, Chichi, Israel, and Micah. Will everyone be attending the cake reception at the Douglass-Myers Maritime Park?
+[No]
 
-Option 1
+Alisha: Whoops. Let's try that again. Please say or enter your six digit reservation code.
 
-  Guest: Yes
+[Yes]
 
-Option 2
+Alisha:
 
-  Guest: No
-  
-  PL: Ok. Will Freddy be attending?
-  
-  Guest: Yes
-  
-  PL: Will Mary be attending?
-  
-  Guest: Yes
-  
-  PL: Will Moises be attending?
-  
-  Guest: No
-  
-  PL: Will Chichi be attending?
-  
-  Guest: No
-  
-  PL: Will anyone else be attending the ceremony and picnic in Patterson Park?
-  
-  Guest: No
+  Yay! Ali and Tasha are excited to hear from you!  
 
-PL: Cool, let's go over your responses.
+  You might remember some of the wedding details from the invitation, but I'll go over it briefly.
 
-PL: For ceremony and picnic at Patterson Park, you said 3 guests will be attending: Freddy, Mary, and Moises. For the cake reception at Douglass-Myers, you said 2 guests will be attending: Freddy and Mary.
+  The wedding will be in Baltimore, Maryland on Saturday, September 1st.
 
-PL: Do you need to make any changes
+  There are two parts to the wedding. The day will start with the ceremony and picnic in Patterson Park. Then after a siesta, we'll meet in the evening for the cake reception and party at the Douglass-Myers Maritime Museum.
 
-Option 1
+  Let's start with the ceremony and picnic in Patterson Park. I found an invitation for Freddy, Mary, Moises, Chi-chi, Issy, and Micha.
 
-  Guest: No
+  Will everyone be attending the ceremony and picnic in Patterson Park?
 
-Option 2
+[?]
 
-  Guest: Yes
+Alisha: Sorry, I didn't understand you. Will everyone be attending the ceremony and picnic in Patterson Park?
 
-  Go back to Patterson Park.
+[No]
 
-PL: Ok, I'll submit your responses. Thanks!
+Alisha: No worries, we'll confirm everyone individually. Will Freddy be attending the ceremony and picnic in Patterson Park?
 
-Guide: https://www.twilio.com/docs/quickstart/ruby/twiml
+...
+
+[Yes]
+
+Alisha: Ok, got it. Now we'll move on to the cake reception and party at the Douglass-Myers Maritime Museum. Will everyone be attending  the cake reception and party at the Douglass-Myers Maritime Museum?

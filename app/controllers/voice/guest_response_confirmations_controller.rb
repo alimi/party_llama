@@ -7,11 +7,20 @@ class Voice::GuestResponseConfirmationsController < Voice::ApplicationController
     attending_guests, not_attending_guests =
       Current.party.guests.partition { |guest| guest[venue_attendance_field] }
 
-    message = "#{venue_translation(".prefix")} #{translate(
-      ".message",
-      attending_guests: guest_sentence(attending_guests),
-      not_attending_guests: guest_sentence(not_attending_guests)
-    )}"
+    message = [
+      venue_translation("prefix"),
+      translate(
+        ".attending",
+        guests: attending_guests.map(&:first_name).to_sentence,
+        count: attending_guests.length
+      ),
+      translate(
+        ".not_attending",
+        guests: not_attending_guests.map(&:first_name).to_sentence,
+        count: not_attending_guests.length
+      ),
+      translate(".concluscion")
+    ].join(" ")
 
     render xml: VoiceXML.new(
       message: message,
@@ -26,14 +35,8 @@ class Voice::GuestResponseConfirmationsController < Voice::ApplicationController
     else
       redirect_to venue_path(
         :new_voice_guest_response_path,
-        prefix: "Sorry about that. Let's try again."
+        prefix: translate(".error")
       )
     end
-  end
-
-  private
-
-  def guest_sentence(guests)
-    guests.map(&:first_name).to_sentence.presence || "no one"
   end
 end

@@ -1,34 +1,3 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
   affirmative_words: &affirmative_words
     - "yes"
@@ -47,31 +16,56 @@ en:
     - *negative_words
 
   voice:
+    unclear_speech: Sorry, I didn't understand you.
     guest_response_confirmations:
+      create:
+        error: Sorry about that. Let's try again.
       new:
-        message: "You replied yes for %{attending_guests}, and you replied no for %{not_attending_guests}. Is this correct?"
+        attending:
+          zero: You answered yes for no one.
+          one: "You answered yes for %{guests}."
+          other: "You answered yes for %{guests}."
+        not_attending:
+          zero: And you answered no for no one.
+          one: "And you answered no for %{guests}."
+          other: "And you answered no for %{guests}."
+        concluscion: Is this correct?
         patterson_park:
-          prefix: Let's go over your responses for the picnic and ceremony at Patterson Park.
+          prefix: Let's go over your responses for the ceremony and picnic at Patterson Park.
         douglass_myers:
           prefix: Let's go over your responses for the cake reception at the Douglass-Myers Maritime Park.
     guest_responses:
       new:
         patterson_park:
-          message: "%{prefix} Will %{name} be attending the picnic and ceremony in Patterson Park?"
+          message: "%{prefix} Will %{name} be attending the ceremony and picnic in Patterson Park?"
         douglass_myers:
           message: "%{prefix} Will %{name} be attending the cake reception at the Douglass-Myers Maritime Park?"
     party_responses:
+      create:
+        concluscion:
+          attending: Thanks for the call! Ali and Tasha will be excited to know that you'll be at the wedding. For more info about the wedding, visit aliandtasha.com. Good bye.
+          not_attending: Thanks for the call! Ali and Tasha will miss you at the wedding but no hard feelings. Good bye.
+        transition: Ok, no worries. We'll confirm everyone individually.
       new:
         patterson_park:
-          intro: "Yay! We're excited to hear from you! There's a lot of info about the wedding. Ceremony, picnic, dancing, blah, blah, blah. Give me one minute while I look up your invitation for the ceremony and picnic in Patterson Park. I found an invitation for %{guests}."
+          intro: "Yay! Ali and Tasha are excited to hear from you! You might remember some of the wedding details from the invitation, but I'll go over it again briefly. The wedding will be in Baltimore, Maryland on Saturday, September 1st. There are two parts to the wedding. The day will start with the ceremony and picnic in Patterson Park. Then after a siesta, we'll meet in the evening for the cake reception at the Douglass-Myers Maritime Park. Let's start with the ceremony and picnic in Patterson Park. I found an invitation for %{guests}."
           message:
             one: "%{prefix} Will you be attending the ceremony and picnic in Patterson Park?"
             other: "%{prefix} Will everyone be attending the ceremony and picnic in Patterson Park?"
         douglass_myers:
-          intro: "Great! Now, we'll move on to the cake reception at the Douglass-Myers Maritime Park. I an found invitation for %{guests}."
+          intro: "OK, got it. Now, we'll move on to the cake reception at the Douglass-Myers Maritime Park. I an found invitation for %{guests}."
           message:
             one: "%{prefix} Will you be attending the cake reception at the Douglass-Myers Maritime Park?"
             other: "%{prefix} Will everyone be attending the cake reception at the Douglass-Myers Maritime Park?"
-    session_verifications:
+    sessions:
+      new:
+        intro: Hi, I'm Alisha. Let's get started!
+        message: "%{prefix} Please say or enter your six digit reservation code."
       create:
-        passed_submission_deadline: "Sorry, we're no longer accepting responses your party. Good bye."
+        error: Sorry, I couldn't find your reservation.
+    session_verifications:
+      new:
+        message: "%{prefix} Are we speaking with %{party}?"
+      create:
+        passed_submission_deadline: Sorry, Ali and Tasha are no longer accepting responses for your party. Good bye.
+        wrong_party: Whoops, let's try that again.

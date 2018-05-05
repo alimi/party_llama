@@ -2,11 +2,10 @@ class Voice::SessionsController < Voice::ApplicationController
   include Voiceable
 
   def new
-    prefix = params[:prefix] || "Welcome to the wedding hotline!"
-    message = "#{prefix} Please say or enter your reservation code."
+    prefix = params[:prefix] || translate(".intro")
 
     render xml: VoiceXML.new(
-      message: message,
+      message: translate(".message", prefix: prefix),
       next_path: voice_sessions_path,
       expect: (1..100).to_a.join(",")
     )
@@ -19,9 +18,7 @@ class Voice::SessionsController < Voice::ApplicationController
       session[:current_party_id] = party.id
       redirect_to new_voice_session_verification_path
     else
-      redirect_to new_voice_session_path(
-        prefix: "Sorry, we couldn't find your reservation."
-      )
+      redirect_to new_voice_session_path(prefix: translate(".error"))
     end
   end
 end
