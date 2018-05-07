@@ -8,7 +8,8 @@ class Voice::GuestResponseConfirmationsController < Voice::ApplicationController
       Current.party.guests.partition { |guest| guest[venue_attendance_field] }
 
     message = [
-      venue_translation("prefix"),
+      params[:prefix],
+      venue_translation("intro"),
       translate(
         ".attending",
         guests: attending_guests.map(&:first_name).to_sentence,
@@ -32,10 +33,15 @@ class Voice::GuestResponseConfirmationsController < Voice::ApplicationController
   def create
     if voice_input.affirmative?
       complete_venue_responses
-    else
+    elsif voice_input.negative?
       redirect_to venue_path(
         :new_voice_guest_response_path,
         prefix: translate(".error")
+      )
+    else
+      redirect_to venue_path(
+        :new_voice_guest_response_confirmation_path,
+        prefix: translate("voice.unclear_speech")
       )
     end
   end
