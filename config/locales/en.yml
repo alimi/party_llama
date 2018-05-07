@@ -31,29 +31,30 @@ en:
           other: "And you answered no for %{guests}."
         concluscion: Is this correct?
         patterson_park:
-          prefix: Let's go over your responses for the ceremony and picnic at Patterson Park.
+          intro: Let's go over your responses for the ceremony and picnic at Patterson Park.
         douglass_myers:
-          prefix: Let's go over your responses for the cake reception at the Douglass-Myers Maritime Park.
+          intro: Let's go over your responses for the cake reception at the Douglass-Myers Maritime Park.
     guest_responses:
       new:
         patterson_park:
-          message: "%{prefix} Will %{name} be attending the ceremony and picnic in Patterson Park?"
+          message: "%{prefix} Will %{name} be attending the ceremony and picnic?"
         douglass_myers:
-          message: "%{prefix} Will %{name} be attending the cake reception at the Douglass-Myers Maritime Park?"
+          message: "%{prefix} Will %{name} be attending the cake reception?"
     party_responses:
       create:
         concluscion:
-          attending: Thanks for the call! Ali and Tasha will be excited to know that you'll be at the wedding. For more info about the wedding, visit aliandtasha.com. Good bye.
-          not_attending: Thanks for the call! Ali and Tasha will miss you at the wedding but no hard feelings. Good bye.
+          prefix: Alright, that's the end of the RSVP process. Thanks for taking the time to call.
+          attending: Ali and Tasha will be excited to see you at the wedding! To get more info about the wedding, please visit ali and tasha dot com. Good bye.
+          not_attending: Ali and Tasha will miss you at the wedding but no hard feelings. Good bye.
         transition: Ok, no worries. We'll confirm everyone individually.
       new:
         patterson_park:
-          intro: "Yay! Ali and Tasha are excited to hear from you! You might remember some of the wedding details from the invitation, but I'll go over it again briefly. The wedding will be in Baltimore, Maryland on Saturday, September 1st. There are two parts to the wedding. The day will start with the ceremony and picnic in Patterson Park. Then after a siesta, we'll meet in the evening for the cake reception at the Douglass-Myers Maritime Park. Let's start with the ceremony and picnic in Patterson Park. I found an invitation for %{guests}."
+          intro: "Yay! Ali and Tasha are excited to hear from you! You might remember some of the wedding details from the invitation, but I'll go over them again briefly. The wedding will be in Baltimore, Maryland on Saturday, September 1st. There are two parts to the wedding. The day will start with the ceremony and picnic in Patterson Park. Then after a siesta, we'll meet in the evening for the cake reception at the Douglass-Myers Maritime Park. Let's start with the ceremony and picnic in Patterson Park. I found an invitation for %{guests}."
           message:
             one: "%{prefix} Will you be attending the ceremony and picnic in Patterson Park?"
             other: "%{prefix} Will everyone be attending the ceremony and picnic in Patterson Park?"
         douglass_myers:
-          intro: "OK, got it. Now, we'll move on to the cake reception at the Douglass-Myers Maritime Park. I an found invitation for %{guests}."
+          intro: "Got it. Now, we'll move on to the cake reception at the Douglass-Myers Maritime Park. I found an invitation for %{guests}."
           message:
             one: "%{prefix} Will you be attending the cake reception at the Douglass-Myers Maritime Park?"
             other: "%{prefix} Will everyone be attending the cake reception at the Douglass-Myers Maritime Park?"
@@ -65,7 +66,7 @@ en:
         error: Sorry, I couldn't find your reservation.
     session_verifications:
       new:
-        message: "%{prefix} Are we speaking with %{party}?"
+        message: "%{prefix} Are we speaking with %{party}? You can say yes or no, or you can press 1 for yes and 2 for no."
       create:
         passed_submission_deadline: Sorry, Ali and Tasha are no longer accepting responses for your party. Good bye.
-        wrong_party: Whoops, let's try that again.
+        wrong_party: Sorry, let's try that again.

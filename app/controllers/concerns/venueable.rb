@@ -24,6 +24,10 @@ module Venueable
   private
 
   def concluscion
+    "#{translate(".concluscion.prefix")} #{attendance_message}"
+  end
+
+  def attendance_message
     if Current.party.attending?
       translate(".concluscion.attending")
     else
