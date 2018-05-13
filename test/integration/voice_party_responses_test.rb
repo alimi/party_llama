@@ -36,21 +36,21 @@ class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
     post_to_next_path params: { "SpeechResult" => "No.", "Confidence" => ".9" }
 
     assert_match(
-      /Will Black be attending.*Patterson Park/,
+      /Will Black be attending.*ceremony and picnic/,
       xml_response.Response.Gather.Say.content
     )
 
     post_to_next_path params: { "SpeechResult" => "Yes.", "Confidence" => ".9" }
 
     assert_match(
-      /Will Iron be attending.*Patterson Park/,
+      /Will Iron be attending.*ceremony and picnic/,
       xml_response.Response.Gather.Say.content
     )
 
     post_to_next_path params: { "SpeechResult" => "Yes.", "Confidence" => ".9" }
 
     assert_match(
-      /Will Captain be attending.*Patterson Park/,
+      /Will Captain be attending.*ceremony and picnic/,
       xml_response.Response.Gather.Say.content
     )
 
