@@ -1,0 +1,22 @@
+es:
+  affirmative_words: &affirmative_words
+    - sí
+  negative_words: &negative_words
+    - "no"
+  affirmative_and_negative_words:
+    - *affirmative_words
+    - *negative_words
+
+  voice:
+    sessions:
+      new:
+        intro: Hola, soy Alisha. ¡Empecemos!
+        message: "%{prefix} Por favor, diga o marque su código de reservación de seis dígitos."
+      create:
+        error: Lo siento, no econtré su reservacicón.
+    session_verifications:
+      new:
+        message: "%{prefix} Estoy hablando con %{party}?"
+      create:
+        passed_submission_deadline: Sorry, Ali and Tasha are no longer accepting responses for your party. Good bye.
+        wrong_party: Lo siento, tratamos otra vez.

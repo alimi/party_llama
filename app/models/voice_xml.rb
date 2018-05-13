@@ -19,8 +19,8 @@ class VoiceXML
 
   def continuing_xml
     response = Twilio::TwiML::VoiceResponse.new do |response|
-      response.gather action: next_path, input: "dtmf speech", hints: expect do |gather|
-        gather.say message, voice: "alice", language: "en-US"
+      response.gather action: next_path, input: "dtmf speech", hints: expect, language: language do |gather|
+        gather.say message, say_options
       end
     end
 
@@ -29,10 +29,22 @@ class VoiceXML
 
   def finishing_xml
     response = Twilio::TwiML::VoiceResponse.new do |response|
-      response.say message, voice: "alice", language: "en-US"
+      response.say message, say_options
       response.hangup
     end
 
     response.to_s
+  end
+
+  def say_options
+    { voice: "alice", language: language }
+  end
+
+  def language
+    if I18n.locale == :es
+      "es-ES"
+    else
+      "en-US"
+    end
   end
 end
