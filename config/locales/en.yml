@@ -16,7 +16,7 @@ en:
     - *negative_words
 
   voice:
-    unclear_speech: Sorry, I didn't understand you.
+    unclear_yes_no: Sorry, I didn't understand you. You can say yes or no, or you can press 1 for yes and 2 for no.
     guest_response_confirmations:
       create:
         error: Sorry about that. Let's try again.
@@ -66,7 +66,7 @@ en:
         error: Sorry, I couldn't find your reservation.
     session_verifications:
       new:
-        message: "%{prefix} Are we speaking with %{party}? You can say yes or no, or you can press 1 for yes and 2 for no."
+        message: "%{prefix} Are we speaking with %{party}?"
       create:
         passed_submission_deadline: Sorry, Ali and Tasha are no longer accepting responses for your party. Good bye.
         wrong_party: Sorry, let's try that again.

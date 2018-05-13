@@ -31,7 +31,7 @@ class Voice::PartyResponsesController < Voice::ApplicationController
     else
       redirect_to venue_path(
         :new_voice_party_response_path,
-        prefix: translate("voice.unclear_speech")
+        prefix: translate("voice.unclear_yes_no")
       )
     end
   end

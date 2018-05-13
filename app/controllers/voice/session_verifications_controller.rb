@@ -24,7 +24,7 @@ class Voice::SessionVerificationsController < Voice::ApplicationController
     else
       redirect_to new_voice_session_verification_path(
         Current.party.id,
-        prefix: translate("voice.unclear_speech")
+        prefix: translate("voice.unclear_yes_no")
       )
     end
   end

@@ -41,7 +41,7 @@ class Voice::GuestResponseConfirmationsController < Voice::ApplicationController
     else
       redirect_to venue_path(
         :new_voice_guest_response_confirmation_path,
-        prefix: translate("voice.unclear_speech")
+        prefix: translate("voice.unclear_yes_no")
       )
     end
   end

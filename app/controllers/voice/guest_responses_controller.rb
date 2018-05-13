@@ -21,7 +21,7 @@ class Voice::GuestResponsesController < Voice::ApplicationController
     else
       redirect_to venue_path(
         :new_voice_guest_response_path,
-        prefix: translate("voice.unclear_speech"),
+        prefix: translate("voice.unclear_yes_no"),
         guest_id: current_guest.id
       )
     end
