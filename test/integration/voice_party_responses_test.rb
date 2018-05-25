@@ -23,7 +23,7 @@ class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
 
     assert_includes(
       xml_response.Response.Gather.Say.content,
-      "Are we speaking with The Avengers?"
+      "Am I speaking with The Avengers?"
     )
 
     post_to_next_path params: { "SpeechResult" => "Yes.", "Confidence" => ".9" }
@@ -98,7 +98,7 @@ class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
 
     assert_includes(
       xml_response.Response.Gather.Say.content,
-      "Are we speaking with Peter Parker?"
+      "Am I speaking with Peter Parker?"
     )
 
     post_to_next_path params: { "SpeechResult" => "Yes.", "Confidence" => ".9" }
@@ -144,7 +144,7 @@ class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
 
     assert_includes(
       xml_response.Response.Gather.Say.content,
-      "Are we speaking with Justice League?"
+      "Am I speaking with Justice League?"
     )
 
     post_to_next_path(
