@@ -8,15 +8,57 @@ es:
     - *negative_words
 
   voice:
+    concluscion:
+      prefix: Bueno, ya terminamos. Gracias por tomarse el tiempo para llamar.
+      attending: ¡Ali y Tasha van a estar emocionados de verle en la boda! Para obtener más información sobre la boda, por favor visite ali and tasha dot com. Adiós.
+      not_attending: Ali y Tasha van a extrañarle en la boda pero no le preocupes. Adiós.
+    unclear_yes_no: Lo siento, no le entendí. Puede decir sí o no, o puede marcar uno para sí or dos para no.
+    guest_response_confirmations:
+      create:
+        error: Lo siento. Vamos a tratar de nuevo.
+      new:
+        attending:
+          zero: Contestó que sí por nadie.
+          one: "Contestó que sí por %{guests}."
+          other: "Contestó que sí por %{guests}."
+        not_attending:
+          zero: Y contestó que no por nadie.
+          one: "Y contestó que no por %{guests}."
+          other: "Y contestó que no por %{guests}."
+        concluscion: ¿Es correcto?
+        patterson_park:
+          intro: Vamos a repasar sus respuestas para la ceremonia y pícnic en Parque Patterson.
+        douglass_myers:
+          intro: Vamos a repasar sus respuestas para la recepción de pasteles en el Douglass-Myers Maritime Park.
+    guest_responses:
+      new:
+        patterson_park:
+          message: "%{prefix} ¿%{name} va a asistir a la ceremonia y pícnic?"
+        douglass_myers:
+          message: "%{prefix} ¿%{name} va a asistir a la recepción de pasteles?"
+    party_responses:
+      create:
+        transition: No problemo. Vamos a confirmar a todos individualmente.
+      new:
+        patterson_park:
+          intro: "¡Que bueno! Ali y Tasha estan emocionados de oir de usted! Es posible que recuerda algunos detalles del boda de la invitación pero voy a repasarlos por poco tiempo otra vez. La boda va a estar en Baltimore, Maryland en sábado, el primero de septiembre. Hay dos partes de la boda. El día empieza con la ceremonia y pícnic en Parque Patterson. Luego despues de un descanso, nos vamos a reunir por la noche para la recepción de pasteles en el Douglass-Myers Maritime Park. Vamos a empezar con la ceremonia y pícnic en Parque Patterson. Encuentro un invitación para %{guests}."
+          message:
+            one: "%{prefix} ¿Va a asistir a la ceremonia y pícnic en Parque Patterson?"
+            other: "%{prefix} Todos van a asistir a la ceremonia y pícnic en Parque Patterson?"
+        douglass_myers:
+          intro: "OK, lo tengo. Ahora nos vamos a pasar al recepción de pasteles en el Douglass-Myers Maritime Park. Encontré un invitación para %{guests}."
+          message:
+            one: "%{prefix} ¿Va a asistir a la recepción de pasteles en el Douglass-Myers Maritime Park?"
+            other: "%{prefix} Todos van a asistir a la recepción de pasteles en el Douglass-Myers Maritime Park?"
     sessions:
       new:
         intro: Hola, soy Alisha. ¡Empecemos!
         message: "%{prefix} Por favor, diga o marque su código de reservación de seis dígitos."
       create:
-        error: Lo siento, no econtré su reservacicón.
+        error: Lo siento, no econtré su reservación.
     session_verifications:
       new:
         message: "%{prefix} Estoy hablando con %{party}?"
       create:
-        passed_submission_deadline: Sorry, Ali and Tasha are no longer accepting responses for your party. Good bye.
-        wrong_party: Lo siento, tratamos otra vez.
+        passed_submission_deadline: Lo siento, Ali y Natasha no estan aceptando respuestas para su grupo. Adios.
+        wrong_party: Lo siento, vamos a tratar otra vez.
