@@ -1,4 +1,9 @@
 es:
+  support:
+    array:
+      two_words_connector: y
+      last_word_connector: ", y "
+
   affirmative_words: &affirmative_words
     - sí
   negative_words: &negative_words
