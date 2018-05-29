@@ -34,7 +34,7 @@ es:
         patterson_park:
           intro: Vamos a repasar sus respuestas para la ceremonia y pícnic en Parque Patterson.
         douglass_myers:
-          intro: Vamos a repasar sus respuestas para la recepción de pasteles en el Douglass-Myers Maritime Park.
+          intro: Vamos a repasar sus respuestas para la recepción de pasteles en el Douglass-Mayers Meretáym Park.
     guest_responses:
       new:
         patterson_park:
@@ -46,15 +46,15 @@ es:
         transition: No problemo. Vamos a confirmar a todos individualmente.
       new:
         patterson_park:
-          intro: "¡Que bueno! Ali y Tasha estan emocionados de oir de usted! Es posible que recuerda algunos detalles del boda de la invitación pero voy a repasarlos por poco tiempo otra vez. La boda va a estar en Baltimore, Maryland en sábado, el primero de septiembre. Hay dos partes de la boda. El día empieza con la ceremonia y pícnic en Parque Patterson. Luego despues de un descanso, nos vamos a reunir por la noche para la recepción de pasteles en el Douglass-Myers Maritime Park. Vamos a empezar con la ceremonia y pícnic en Parque Patterson. Encuentro un invitación para %{guests}."
+          intro: "¡Que bueno! Ali y Tasha estan emocionados de oir de usted! Es posible que recuerda algunos detalles del boda de la invitación pero voy a repasarlos por poco tiempo otra vez. La boda va a estar en Baltímor, Maryland en sábado, el primero de septiembre. Hay dos partes de la boda. El día empieza con la ceremonia y pícnic en Parque Patterson. Luego despues de un descanso, nos vamos a reunir por la noche para la recepción de pasteles en el Douglass-Mayers Meretáy Park. Vamos a empezar con la ceremonia y pícnic en Parque Patterson. Encuentro un invitación para %{guests}."
           message:
             one: "%{prefix} ¿Va a asistir a la ceremonia y pícnic en Parque Patterson?"
             other: "%{prefix} Todos van a asistir a la ceremonia y pícnic en Parque Patterson?"
         douglass_myers:
-          intro: "OK, lo tengo. Ahora nos vamos a pasar al recepción de pasteles en el Douglass-Myers Maritime Park. Encontré un invitación para %{guests}."
+          intro: "OK, lo tengo. Ahora nos vamos a pasar al recepción de pasteles en el Douglass-Mayers Meretáy Park. Encontré un invitación para %{guests}."
           message:
-            one: "%{prefix} ¿Va a asistir a la recepción de pasteles en el Douglass-Myers Maritime Park?"
-            other: "%{prefix} Todos van a asistir a la recepción de pasteles en el Douglass-Myers Maritime Park?"
+            one: "%{prefix} ¿Va a asistir a la recepción de pasteles en el Douglass-Mayers Meretáy Park?"
+            other: "%{prefix} Todos van a asistir a la recepción de pasteles en el Douglass-Mayers Meretáy Park?"
     sessions:
       new:
         intro: Hola, soy Alisha. ¡Empecemos!
