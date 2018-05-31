@@ -1,11 +1,7 @@
 class Admin::GuestsController < ApplicationController
   include AdminAuthentication
 
-  before_action :set_party, except: :index
-
-  def index
-    @party = Party.includes(:guests).find(params[:party_id])
-  end
+  before_action :set_party
 
   def new
     @guest = @party.guests.new
@@ -13,7 +9,12 @@ class Admin::GuestsController < ApplicationController
 
   def create
     @party.guests.create!(guest_params)
-    redirect_to admin_party_guests_path(@party)
+
+    if params[:more_guests]
+      redirect_to new_admin_party_guest_path(@party, more_guests: true)
+    else
+      redirect_to admin_party_path(@party)
+    end
   end
 
   def edit
@@ -23,7 +24,7 @@ class Admin::GuestsController < ApplicationController
   def update
     guest = @party.guests.find(params[:id])
     guest.update!(guest_params)
-    redirect_to admin_party_guests_path(@party)
+    redirect_to admin_party_path(@party)
   end
 
   private

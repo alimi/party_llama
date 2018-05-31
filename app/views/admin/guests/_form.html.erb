@@ -1,15 +1,19 @@
 <%= form_for [:admin, guest.party, guest] do |guest_form| %>
-  <ul>
-    <li>
-      <%= guest_form.label(:first_name) %>
-      <%= guest_form.text_field(:first_name) %>
-    </li>
+  <p>
+    <%= guest_form.label(:first_name) %>
+    <%= guest_form.text_field(:first_name) %>
+  </p>
 
-    <li>
-      <%= guest_form.label(:last_name) %>
-      <%= guest_form.text_field(:last_name) %>
-    </li>
-  </ul>
+  <p>
+    <%= guest_form.label(:last_name) %>
+    <%= guest_form.text_field(:last_name) %>
+  </p>
 
-  <%= guest_form.submit %>
+  <p>
+    <%= guest_form.submit %>
+
+    <% if request.query_parameters[:more_guests] %>
+      <%= guest_form.submit "Add More Guests", name: "more_guests" %>
+    <% end %>
+  </p>
 <% end %>

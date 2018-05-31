@@ -1,0 +1,25 @@
+<h2><%= @party.greeting %></h2>
+
+<p><strong>Family Name</strong> <%= @party.family_name %></p>
+<p><strong>Responses End At</strong> <%= @party.responses_end_at %></p>
+<p><%= link_to "Edit", edit_admin_party_path(@party) %></p>
+
+<h3>Guests</h3>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Actions</th>
+  </tr>
+
+  <% @party.guests.each do |guest| %>
+    <tr>
+      <td><%= guest.name %></td>
+      <td>
+        <%= link_to "Edit", edit_admin_party_guest_path(@party, guest) %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "Add Guest", new_admin_party_guest_path(@party) %></p>

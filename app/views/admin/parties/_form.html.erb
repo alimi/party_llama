@@ -1,15 +1,23 @@
 <%= form_for [:admin, party] do |party_form| %>
-  <ul>
-    <li>
-      <%= party_form.label :name %>
-      <%= party_form.text_field :name %>
-    </li>
+  <p>
+    <%= party_form.label :family_name, "Family Name" %>
+    <%= party_form.text_field :family_name %>
+  </p>
 
-    <li>
-      <%= party_form.label :responses_end_at, "Responses End At (UTC)" %>
-      <%= party_form.datetime_select :responses_end_at %>
-    </li>
-  </ul>
+  <p>
+    <%= party_form.label :responses_end_at, "Responses End At (UTC)" %>
+    <%= party_form.datetime_select :responses_end_at %>
+  </p>
 
-  <%= party_form.submit %>
+  <% if party.new_record? %>
+    <%= render "primary_guests", party_form: party_form %>
+  <% end %>
+
+  <p>
+    <%= party_form.submit %>
+
+    <% if party.new_record? %>
+      <%= party_form.submit "Add More Guests", name: "more_guests" %>
+    <% end %>
+  </p>
 <% end %>

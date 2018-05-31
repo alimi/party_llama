@@ -19,13 +19,23 @@ class Admin::PartiesController < ApplicationController
     @no_response_party_count = Party.where(responses_submitted_at: nil).count
   end
 
+  def show
+    @party = Party.includes(:guests).find(params[:id])
+  end
+
   def new
     @party = Party.new
+    2.times { @party.guests.build }
   end
 
   def create
-    party = Party.create!(party_params)
-    redirect_to admin_party_guests_path(party)
+    party = Party.create!(new_party_params)
+
+    if params[:more_guests]
+      redirect_to new_admin_party_guest_path(party, more_guests: true)
+    else
+      redirect_to admin_parties_path
+    end
   end
 
   def edit
@@ -40,7 +50,18 @@ class Admin::PartiesController < ApplicationController
 
   private
 
+  def new_party_params
+    party_params.tap do |party_param|
+      party_param[:guests_attributes] = party_param[:guests_attributes].
+        select { |id, guest_attribute| guest_attribute[:first_name].present? }
+    end
+  end
+
   def party_params
-    params.require(:party).permit(:name, :responses_end_at)
+    params.require(:party).permit(
+      :family_name,
+      :responses_end_at,
+      guests_attributes: [:first_name, :last_name]
+    )
   end
 end

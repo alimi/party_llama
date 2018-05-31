@@ -1,6 +1,8 @@
 class Party < ApplicationRecord
   has_many :guests
 
+  accepts_nested_attributes_for :guests
+
   def passed_submission_deadline?
     if responses_end_at.blank?
       true
@@ -9,11 +11,11 @@ class Party < ApplicationRecord
     end
   end
 
-  def name
-    if single?
-      guests.first.name
+  def greeting
+    if family_name.present?
+      "#{guests.map(&:first_name).to_sentence} #{family_name}"
     else
-      super
+      guests.map(&:name).to_sentence
     end
   end
 

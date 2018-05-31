@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'parties#index'
 
-    resources :parties, only: [:index, :new, :create, :edit, :update] do
+    resources :parties, only: [:index, :show, :new, :create, :edit, :update] do
       resources :guests, only: [:index, :new, :create, :edit, :update]
     end
   end
