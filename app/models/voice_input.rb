@@ -17,7 +17,7 @@ class VoiceInput
   end
 
   def to_s
-    speech.to_s || digits
+    speech.to_s || digits.to_s
   end
 
   SpeechInput = Struct.new(:speech, :confidence) do

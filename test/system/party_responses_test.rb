@@ -15,7 +15,7 @@ class PartyResponsesTest < ApplicationSystemTestCase
     @party.guests.create!(first_name: "Carlton")
 
     visit root_path
-    fill_in "Reservation code", with: @party.reservation_code
+    fill_in "Reservation code", with: "23 24 25"
     click_button "Submit"
 
     assert page.has_content?("Welcome")

@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
   def create
     Current.party = Party.find_by(
-      reservation_code: params[:session][:reservation_code]
+      reservation_code: params[:session][:reservation_code].delete(" ")
     )
 
     if Current.party
