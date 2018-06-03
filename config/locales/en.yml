@@ -20,7 +20,7 @@ en:
   voice:
     concluscion:
       prefix: Alright, that's the end of the RSVP process. Thanks for taking the time to call.
-      attending: Ali and Tasha will be excited to see you at the wedding! To get more info about the wedding, please visit ali and tasha dot com. Good bye.
+      attending: Ali and Tasha will be excited to see you at the wedding! To get more info about the wedding, please visit ali and tasha dot us. Good bye.
       not_attending: Ali and Tasha will miss you at the wedding but no hard feelings. Good bye.
     unclear_yes_no: Sorry, I didn't understand you. You can say yes or no, or you can press 1 for yes and 2 for no.
     guest_response_confirmations:
