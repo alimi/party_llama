@@ -12,7 +12,7 @@ class Voice::SessionsController < Voice::ApplicationController
   end
 
   def create
-    party = Party.find_by(reservation_code: voice_input.to_s)
+    party = Party.find_by(reservation_code: voice_input.to_s.delete(" "))
 
     if party
       session[:current_party_id] = party.id
