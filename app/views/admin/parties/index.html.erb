@@ -27,6 +27,7 @@
     <tr>
       <th>Name</th>
       <th>Guests</th>
+      <th>Reservation Code</th>
       <th>Responded?</th>
       <th>Responses Accepted Until</th>
       <th>Attending Patterson Park</th>
@@ -39,6 +40,7 @@
       <tr>
         <td><%= link_to party.greeting, admin_party_path(party) %></td>
         <td><%= party.guests.map(&:first_name).to_sentence %></td>
+        <td><%= party.reservation_code %></td>
         <td><%= party.responses_submitted_at.present? %></td>
         <td><%= party.responses_end_at %></td>
         <td>

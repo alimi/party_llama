@@ -29,7 +29,10 @@ class Admin::PartiesController < ApplicationController
   end
 
   def create
-    party = Party.create!(new_party_params)
+    party = Party.new
+    party.assign_attributes(new_party_params)
+    party.reservation_code = ReservationCode.generate
+    party.save!
 
     if params[:more_guests]
       redirect_to new_admin_party_guest_path(party, more_guests: true)
@@ -51,8 +54,8 @@ class Admin::PartiesController < ApplicationController
   private
 
   def new_party_params
-    party_params.tap do |party_param|
-      party_param[:guests_attributes] = party_param[:guests_attributes].
+    party_params.tap do |party_params|
+      party_params[:guests_attributes] = party_params[:guests_attributes].
         select { |id, guest_attribute| guest_attribute[:first_name].present? }
     end
   end
