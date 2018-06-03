@@ -13,9 +13,9 @@ class Party < ApplicationRecord
 
   def greeting(conjunction: I18n.translate("and"))
     if family_name.present?
-      "#{guests.primary.map(&:first_name).join(" #{conjunction} ")} #{family_name}"
+      "#{primary_guests.map(&:first_name).join(" #{conjunction} ")} #{family_name}"
     else
-      guests.primary.map(&:name).join(" #{conjunction} ")
+      primary_guests.map(&:name).join(" #{conjunction} ")
     end
   end
 
@@ -28,5 +28,11 @@ class Party < ApplicationRecord
       where(attending_patterson_park: true).
       or(guests.where(attending_douglass_myers: true)).
       any?
+  end
+
+  private
+
+  def primary_guests
+    guests.select(&:primary?)
   end
 end

@@ -1,8 +1,6 @@
 class Guest < ApplicationRecord
   belongs_to :party
 
-  scope :primary, -> { where(primary: true) }
-
   def name
     "#{first_name} #{last_name}".strip
   end
