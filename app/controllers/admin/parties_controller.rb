@@ -64,7 +64,7 @@ class Admin::PartiesController < ApplicationController
     params.require(:party).permit(
       :family_name,
       :responses_end_at,
-      guests_attributes: [:first_name, :last_name]
+      guests_attributes: [:primary, :first_name, :last_name]
     )
   end
 end

@@ -1,6 +1,8 @@
 <%= party_form.fields_for :guests do |guest_fields| %>
   <h3>Primary Guest</h3>
 
+  <%= guest_fields.hidden_field :primary, value: true %>
+
   <p>
     <%= guest_fields.label :first_name, "First Name" %>
     <%= guest_fields.text_field :first_name %>

@@ -3,14 +3,14 @@ require "test_helper"
 class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
   test "a party submits their responses" do
     party = Party.create!(
-      name: "The Avengers",
-      reservation_code: "232425",
+      family_name: "Banks",
+      reservation_code: 232425,
       responses_end_at: 1.week.from_now
     )
 
-    party.guests.create!(first_name: "Black", last_name: "Panther")
-    party.guests.create!(first_name: "Iron", last_name: "Man")
-    party.guests.create!(first_name: "Captain", last_name: "America")
+    party.guests.create!(first_name: "Philip", primary: true)
+    party.guests.create!(first_name: "Vivian", primary: true)
+    party.guests.create!(first_name: "Carlton")
 
     get new_voice_session_path
 
@@ -23,7 +23,7 @@ class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
 
     assert_includes(
       xml_response.Response.Gather.Say.content,
-      "Am I speaking with The Avengers?"
+      "Am I speaking with Philip or Vivian Banks?"
     )
 
     post_to_next_path params: { "SpeechResult" => "Yes.", "Confidence" => ".9" }
@@ -36,21 +36,21 @@ class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
     post_to_next_path params: { "SpeechResult" => "No.", "Confidence" => ".9" }
 
     assert_match(
-      /Will Black be attending.*ceremony and picnic/,
+      /Will Philip be attending.*ceremony and picnic/,
       xml_response.Response.Gather.Say.content
     )
 
     post_to_next_path params: { "SpeechResult" => "Yes.", "Confidence" => ".9" }
 
     assert_match(
-      /Will Iron be attending.*ceremony and picnic/,
+      /Will Vivian be attending.*ceremony and picnic/,
       xml_response.Response.Gather.Say.content
     )
 
     post_to_next_path params: { "SpeechResult" => "Yes.", "Confidence" => ".9" }
 
     assert_match(
-      /Will Captain be attending.*ceremony and picnic/,
+      /Will Carlton be attending.*ceremony and picnic/,
       xml_response.Response.Gather.Say.content
     )
 
@@ -81,11 +81,11 @@ class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
 
   test "a party of one submits their responses" do
     party = Party.create!(
-      reservation_code: "424344",
+      reservation_code: 424344,
       responses_end_at: 1.week.from_now
     )
 
-    party.guests.create!(first_name: "Peter", last_name: "Parker")
+    party.guests.create!(first_name: "Will", last_name: "Smith", primary: true)
 
     get new_voice_session_path
 
@@ -98,7 +98,7 @@ class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
 
     assert_includes(
       xml_response.Response.Gather.Say.content,
-      "Am I speaking with Peter Parker?"
+      "Am I speaking with Will Smith?"
     )
 
     post_to_next_path params: { "SpeechResult" => "Yes.", "Confidence" => ".9" }
@@ -128,10 +128,11 @@ class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
 
   test "a party tries to submit responses after their end date" do
     party = Party.create!(
-      name: "Justice League",
-      reservation_code: "987654",
+      reservation_code: 987654,
       responses_end_at: 1.week.ago
     )
+
+    party.guests.create!(first_name: "Will", last_name: "Smith", primary: true)
 
     get new_voice_session_path
 
@@ -144,7 +145,7 @@ class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
 
     assert_includes(
       xml_response.Response.Gather.Say.content,
-      "Am I speaking with Justice League?"
+      "Am I speaking with Will Smith?"
     )
 
     post_to_next_path(
@@ -160,10 +161,11 @@ class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
 
   test "a party tries to submit responses with an invalid reservation code" do
     party = Party.create!(
-      name: "Justice League",
-      reservation_code: "536631",
+      reservation_code: 536631,
       responses_end_at: 1.week.from_now
     )
+
+    party.guests.create!(first_name: "Will", last_name: "Smith", primary: true)
 
     get new_voice_session_path
 

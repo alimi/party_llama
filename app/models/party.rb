@@ -11,11 +11,11 @@ class Party < ApplicationRecord
     end
   end
 
-  def greeting
+  def greeting(conjunction: I18n.translate("and"))
     if family_name.present?
-      "#{guests.map(&:first_name).to_sentence} #{family_name}"
+      "#{guests.primary.map(&:first_name).join(" #{conjunction} ")} #{family_name}"
     else
-      guests.map(&:name).to_sentence
+      guests.primary.map(&:name).join(" #{conjunction} ")
     end
   end
 

@@ -3,16 +3,16 @@ require "application_system_test_case"
 class PartyResponsesTest < ApplicationSystemTestCase
   setup do
     @party = Party.create!(
-      name: "The Avengers",
-      reservation_code: "232425",
+      family_name: "Banks",
+      reservation_code: 232425,
       responses_end_at: 1.week.from_now
     )
   end
 
   test "a party submits their responses" do
-    @party.guests.create!(first_name: "Black", last_name: "Panther")
-    @party.guests.create!(first_name: "Iron", last_name: "Man")
-    @party.guests.create!(first_name: "Captain", last_name: "America")
+    @party.guests.create!(first_name: "Philip", primary: true)
+    @party.guests.create!(first_name: "Vivian", primary: true)
+    @party.guests.create!(first_name: "Carlton")
 
     visit root_path
     fill_in "Reservation code", with: @party.reservation_code
@@ -22,21 +22,21 @@ class PartyResponsesTest < ApplicationSystemTestCase
     click_link "Next"
 
     assert page.has_content?("Patterson Park")
-    check "Black Panther"
-    check "Captain America"
+    check "Philip Banks"
+    check "Carlton Banks"
     click_button "Next"
 
     assert page.has_content?("Douglass-Myers")
-    check "Black Panther"
-    check "Iron Man"
+    check "Philip Banks"
+    check "Vivian Banks"
     click_button "Next"
 
     assert page.has_content?("Review")
     assert page.has_content?(
-      "Patterson Park 2 guests attending: Black Panther and Captain America"
+      "Patterson Park 2 guests attending: Philip Banks and Carlton Banks"
     )
     assert page.has_content?(
-      "Douglass-Myers 2 guests attending: Black Panther and Iron Man"
+      "Douglass-Myers 2 guests attending: Philip Banks and Vivian Banks"
     )
     click_button "Submit Responses"
 

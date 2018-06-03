@@ -5,7 +5,7 @@ class Voice::SessionVerificationsController < Voice::ApplicationController
   def new
     message = translate(
       ".message",
-      party: Current.party.name,
+      party: Current.party.greeting(conjunction: translate("or")),
       prefix: params[:prefix]
     )
 

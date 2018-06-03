@@ -11,6 +11,8 @@ es:
   affirmative_and_negative_words:
     - *affirmative_words
     - *negative_words
+  and: y
+  or: o
 
   voice:
     concluscion:
