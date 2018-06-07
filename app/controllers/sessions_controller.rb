@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     if Current.party
       save_current_party_in_session
     else
-      flash[:error] = "Sorry, we couldn't find your reservation. Please try again."
+      flash[:error] = translate(".party_not_found")
       redirect_to new_session_path
     end
   end
@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
     if Current.party.passed_submission_deadline?
       redirect_to conclusion_path
     else
-      redirect_to introduction_path
+      redirect_to new_session_verification_path
     end
   end
 end

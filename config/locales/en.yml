@@ -16,6 +16,23 @@ en:
     - *negative_words
   and: and
   or: or
+  "true": "Yes"
+  "false": "No"
+
+  helpers:
+    label:
+      session:
+        reservation_code: Reservation Code
+
+  sessions:
+    new:
+      message: Please enter your six digit reservation code.
+    create:
+      party_not_found: Sorry, we couldn't find your invitation.
+
+  session_verifications:
+    new:
+      message: "Is this %{party}?"
 
   voice:
     concluscion:
