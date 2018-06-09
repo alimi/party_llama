@@ -19,6 +19,7 @@ en:
   "true": "Yes"
   "false": "No"
   next: Next
+  submit: Submit
 
   helpers:
     label:
@@ -36,6 +37,14 @@ en:
     new:
       heading: Patterson Park
       instructions: Please select everyone who will be attending the ceremony and picnic in Patterson Park.
+
+  party_responses:
+    index:
+      patterson_park: Ceremony and Picnic in Patterson Park
+      douglass_myers: Cake Reception at the Fredrick Douglass-Isaac Myers Maritime Park
+      attending: "Attending: %{guests}"
+      not_attending: "Not Attending: %{guests}"
+      edit: Edit Responses
 
   sessions:
     new:

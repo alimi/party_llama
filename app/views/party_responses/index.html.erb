@@ -1,15 +1,53 @@
-<h1>Review</h1>
+<p>Let's review your responses.</p>
 
-<h2>Patterson Park</h2>
+<p><strong><%= translate(".patterson_park") %></strong></p>
 
-<%= @party_responses.for_patterson_park %>
+<% if @patterson_park_guests.attending.any? %>
+  <p>
+    <%=
+      translate(
+        ".attending",
+        guests: @patterson_park_guests.attending.map(&:name).to_sentence
+      )
+    %>
+  </p>
+<% end %>
 
-<h2>Douglass-Myers</h2>
+<% if @patterson_park_guests.not_attending.any? %>
+  <p>
+    <%=
+      translate(
+        ".not_attending",
+        guests: @patterson_park_guests.not_attending.map(&:name).to_sentence
+      )
+    %>
+  </p>
+<% end %>
 
-<%= @party_responses.for_douglass_myers %>
+<p><strong><%= translate(".douglass_myers") %></strong></p>
 
-<p>
-  <%= link_to "Edit Responses", new_patterson_park_responses_path %>
-</p>
+<% if @douglass_myers_guests.attending.any? %>
+  <p>
+    <%=
+      translate(
+        ".attending",
+        guests: @douglass_myers_guests.attending.map(&:name).to_sentence
+      )
+    %>
+  </p>
+<% end %>
 
-<%= button_to "Submit Responses", party_response_submissions_path %>
+<% if @douglass_myers_guests.not_attending.any? %>
+  <p>
+    <%=
+      translate(
+        ".not_attending",
+        guests: @douglass_myers_guests.not_attending.map(&:name).to_sentence
+      )
+    %>
+  </p>
+<% end %>
+
+<p><%= link_to translate(".edit"), new_patterson_park_responses_path %></p>
+
+<%= button_to translate("submit"), party_response_submissions_path %>
