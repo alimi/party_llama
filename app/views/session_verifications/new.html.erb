@@ -1,6 +1,13 @@
-<p><%= @message %></p>
+<p>
+  <%=
+    translate(
+      ".instructions",
+      party: Current.party.greeting(conjunction: translate("or"))
+    )
+  %>
+</p>
 
 <%= form_with(scope: :session_verifications, url: session_verifications_path) do |form| %>
   <%= form.collection_radio_buttons(:verified, @options, :value, :text) %>
-  <%= form.submit "Submit" %>
+  <%= form.submit %>
 <% end %>

@@ -2,12 +2,6 @@ class SessionVerificationsController < ApplicationController
   include PartyAuthentication
 
   def new
-    @message = translate(
-      ".message",
-      party: Current.party.greeting(conjunction: translate("or")),
-      raise: true
-    )
-
     @options = [Option.new(true), Option.new(false)]
   end
 

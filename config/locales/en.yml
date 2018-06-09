@@ -18,21 +18,24 @@ en:
   or: or
   "true": "Yes"
   "false": "No"
+  next: Next
 
   helpers:
     label:
       session:
         reservation_code: Reservation Code
+    submit:
+      submit: Submit
 
   sessions:
     new:
-      message: Please enter your six digit reservation code.
+      instructions: Please enter your six digit reservation code.
     create:
-      party_not_found: Sorry, we couldn't find your invitation.
+      party_not_found: Sorry, I couldn't find your reservation.
 
   session_verifications:
     new:
-      message: "Is this %{party}?"
+      instructions: "Is this %{party}?"
 
   voice:
     concluscion:
@@ -68,7 +71,7 @@ en:
         transition: Ok, no worries. We'll confirm everyone individually.
       new:
         patterson_park:
-          intro: "Yay! Ali and Tasha are excited to hear from you! You might remember some of the wedding details from the invitation, but I'll go over them again briefly. The wedding will be in Baltimore, Maryland on Saturday, September 1st. There are two parts to the wedding. The day will start with the ceremony and picnic in Patterson Park. Then after a siesta, we'll meet in the evening for the cake reception at the Douglass-Myers Maritime Park. Let's start with the ceremony and picnic in Patterson Park. I found an invitation for %{guests}."
+          intro: "Yay! Ali and Tasha are excited to hear from you! You might remember some of the wedding details from the invitation, but I'll go over them again briefly. The wedding will be in Baltimore, Maryland on Saturday, September 1st. There are two parts to the wedding. The day will start with the ceremony and picnic in Patterson Park. Then after a break to rest, we'll meet in the evening for the cake reception at the Douglass-Myers Maritime Park. Let's start with the ceremony and picnic in Patterson Park. I found an invitation for %{guests}."
           message:
             one: "%{prefix} Will you be attending the ceremony and picnic in Patterson Park?"
             other: "%{prefix} Will everyone be attending the ceremony and picnic in Patterson Park?"
