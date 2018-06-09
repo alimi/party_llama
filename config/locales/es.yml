@@ -17,7 +17,7 @@ es:
   voice:
     concluscion:
       prefix: Bueno, ya terminamos. Gracias por tomarse el tiempo para llamar.
-      attending: ¡Ali y Tasha van a estar emocionados de verle en la boda! Para obtener más información sobre la boda, por favor visite ali and tasha punto u s. Adiós.
+      attending: ¡Ali y Tasha van a estar emocionados de verle en la boda! Para obtener más información sobre la boda, por favor visite ali and tasha punto com. Adiós.
       not_attending: Ali y Tasha van a extrañarle en la boda pero no le preocupes. Adiós.
     unclear_yes_no: Lo siento, no le entendí. Puede decir sí o no, o puede marcar uno para sí or dos para no.
     guest_response_confirmations:
