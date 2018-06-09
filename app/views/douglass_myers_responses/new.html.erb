@@ -1,4 +1,6 @@
-<p>Douglass-Myers</p>
+<p><%= translate(".heading") %></p>
+
+<p><%= translate(".instructions") %></p>
 
 <%= form_with scope: :douglass_myers_response, url: douglass_myers_responses_path do |form| %>
   <%= form.collection_check_boxes :attending_guest_ids, @guests, :id, :name do |b| %>
@@ -6,5 +8,5 @@
     <%= b.label %>
   <% end %>
 
-  <%= form.submit "Next" %>
+  <%= form.submit translate("next") %>
 <% end %>

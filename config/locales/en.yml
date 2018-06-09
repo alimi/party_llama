@@ -27,6 +27,16 @@ en:
     submit:
       submit: Submit
 
+  douglass_myers_responses:
+    new:
+      heading: Fredrick Douglass-Isaac Myers Maritime Park
+      instructions: Please select everyone who will be attending the the cake reception at the Fredrick Douglass-Isaac Myers Maritime Park.
+
+  patterson_park_responses:
+    new:
+      heading: Patterson Park
+      instructions: Please select everyone who will be attending the ceremony and picnic in Patterson Park.
+
   sessions:
     new:
       instructions: Please enter your six digit reservation code.
