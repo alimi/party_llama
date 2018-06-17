@@ -1,5 +1,5 @@
 class Voice::ApplicationController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  include VoiceRequestValidator
 
   before_action :set_locale
 
