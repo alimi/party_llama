@@ -12,10 +12,4 @@ class PartyTest < ActiveSupport::TestCase
 
     assert_equal false, party.passed_submission_deadline?
   end
-
-  test "#passed_submission_deadline? when it hasn't been set" do
-    party = Party.new
-
-    assert_equal true, party.passed_submission_deadline?
-  end
 end

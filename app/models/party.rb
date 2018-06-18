@@ -3,12 +3,10 @@ class Party < ApplicationRecord
 
   accepts_nested_attributes_for :guests
 
+  attribute :responses_end_at, :datetime, default: DateTime.new(2018, 8, 5, 7)
+
   def passed_submission_deadline?
-    if responses_end_at.blank?
-      true
-    else
-      responses_end_at && responses_end_at < DateTime.current
-    end
+    responses_end_at < DateTime.current
   end
 
   def greeting(conjunction: I18n.translate("and"))
