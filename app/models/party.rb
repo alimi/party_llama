@@ -6,7 +6,11 @@ class Party < ApplicationRecord
   attribute :responses_end_at, :datetime, default: DateTime.new(2018, 8, 5, 7)
 
   def passed_submission_deadline?
-    responses_end_at < DateTime.current
+    if responses_submitted_at.present?
+      (responses_submitted_at + 2.days) < DateTime.current
+    else
+      responses_end_at < DateTime.current
+    end
   end
 
   def greeting(conjunction: I18n.translate("and"))
