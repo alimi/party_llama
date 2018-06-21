@@ -8,7 +8,7 @@ This little app was built to collect RSVP responses for [Ali](https://twitter.co
 # Dependencies
 
 * Ruby (version specified in .ruby-version)
-* Rails 5.2.0.beta2 (*I should upgrade that...*)
+* Rails 5.2.0
 * Postgres
 * Twilio
 * Good vibes
