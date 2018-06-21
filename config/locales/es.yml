@@ -60,7 +60,7 @@ es:
     sessions:
       new:
         intro: Hola, soy Alisha. ¡Empecemos!
-        message: "%{prefix} Por favor, diga o marque su código de reservación de seis dígitos."
+        message: "%{prefix} Por favor, diga o marque su código de reservación."
       create:
         error: Lo siento, no econtré su reservación.
     session_verifications:
