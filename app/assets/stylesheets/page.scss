@@ -1,0 +1,44 @@
+p {
+	margin: .25em;
+}
+
+.box-div {
+  border: solid;
+  margin-bottom: 1em;
+  border-width: 1px;
+}
+
+#caleb_image {
+  display: none;
+  position: absolute;
+  left: -46px;
+  width: 115%;
+  height: auto;
+}
+.page_content {
+	padding: 1em;
+  background: white;
+  color: #7b0b5a;
+  min-height: 75%;
+}
+.blue {
+	color: #1F2558;
+}
+
+
+@media all and (min-width: 775px) {
+  .page_content {
+    position: absolute;
+    left: 15%;
+    width: 65%;
+  }
+  #caleb_image {
+    display: block;
+    left: -120px;
+  }
+  .text_content {
+    margin-left: 30%;
+    width: 40%;
+  }
+
+}

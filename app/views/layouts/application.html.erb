@@ -9,6 +9,44 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="navigation">
+      <nav>
+        <%= link_to "https://www.aliandtasha.com" do %>
+          <%= image_tag 'alitashalogo.png', id: "logo-image"%></a>
+        <% end %>
+        <ul class="list-group">
+          <li>
+            <%= link_to 'RSVP', "/" %>
+          </li>
+          <li>
+            <%= link_to 'Hotel', "https://www.aliandtasha.com/hotel" %>
+          </li>
+          <li>
+            <%= link_to 'Schedule', "https://www.aliandtasha.com/schedule" %>
+          </li>
+          <li>
+            <%= link_to 'Parking', "https://www.aliandtasha.com/parking" %>
+          </li>
+          <li>
+            <%= link_to 'F.A.Q', "https://www.aliandtasha.com/faq" %>
+          </li>
+          <li>
+            <%= link_to 'Artists', "https://www.aliandtasha.com/artists" %>
+          </li>
+          <li>
+            <%= link_to 'Registry', "https://www.zola.com/registry/natashaandali" %>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="content">
+      <img id='caleb_image' src="/assets/caleb-illustration-bigger.gif">
+        <div class='page_content'>
+          <div class='text_content'>
+            <%= yield %>
+          </div>
+        </div>
+      </img>
+    </div>
   </body>
 </html>
