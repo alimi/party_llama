@@ -12,7 +12,14 @@ class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
     party.guests.create!(first_name: "Vivian", primary: true)
     party.guests.create!(first_name: "Carlton")
 
-    get new_voice_session_path
+    get voice_introduction_path
+
+    assert_match(
+      /english_intro.*.mp3/,
+      xml_response.Response.Play.content
+    )
+
+    follow_redirect
 
     assert_match(
       /enter your.*reservation code/,
@@ -87,7 +94,14 @@ class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
 
     party.guests.create!(first_name: "Will", last_name: "Smith", primary: true)
 
-    get new_voice_session_path
+    get voice_introduction_path
+
+    assert_match(
+      /english_intro.*.mp3/,
+      xml_response.Response.Play.content
+    )
+
+    follow_redirect
 
     assert_match(
       /enter your.*reservation code/,
@@ -167,7 +181,14 @@ class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
 
     party.guests.create!(first_name: "Will", last_name: "Smith", primary: true)
 
-    get new_voice_session_path
+    get voice_introduction_path
+
+    assert_match(
+      /english_intro.*.mp3/,
+      xml_response.Response.Play.content
+    )
+
+    follow_redirect
 
     assert_match(
       /enter your.*reservation code/,
@@ -180,6 +201,10 @@ class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
       /Sorry.*say or enter.*reservation code/,
       xml_response.Response.Gather.Say.content
     )
+  end
+
+  def follow_redirect
+    get xml_response.Response.Redirect.content
   end
 
   def post_to_next_path(options = {})
