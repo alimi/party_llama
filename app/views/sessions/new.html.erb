@@ -2,10 +2,10 @@
   <p><%= flash[:error] %></p>
 <% end %>
 
+<h2> R.S.V.P </h2>
 <p><%= translate(".instructions") %></p>
 
 <%= form_with scope: :session, url: sessions_path do |form| %>
-  <%= form.label :reservation_code %>
   <%= form.text_field :reservation_code %>
-  <%= form.submit %>
+  <%= form.submit class: 'button blue' %>
 <% end %>
