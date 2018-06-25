@@ -4,7 +4,13 @@ Voice Recording:
 
   Tasha: In a few moments you'll be connected to our automated assistant, Alisha. She'll walk you through the R.S.V.P. process.
 
-  Ali: Sorry in advance if Alisha butchers your name! I tried teaching her how to say it but you know, computers.
+  Ali: Sorry in advance if Alicia says your name wrong! I tried teaching her how to say it but you know, computers.
+
+  Hola, soy Ali y soy Natasha. Bienvenidos a la línea directa para nuestra boda.
+
+  Tasha: En unos momentos va a conectar con nuestra ayudante automatizada, Alicia. Ella va a ayudarle con el proceso de RSVP.
+
+  Ali: Lo siento si Alicia dice su nombre incorrecto. Traté a enseñar a ella pero computadoras.
 
 Alisha: Hi, I'm Alisha. To get started, please say or enter your six digit reservation code.
 
