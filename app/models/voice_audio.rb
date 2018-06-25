@@ -9,7 +9,7 @@ class VoiceAudio
   def to_xml(options = {})
     response = Twilio::TwiML::VoiceResponse.new
     response.play(url: source_url)
-    response.redirect(next_path)
+    response.redirect(next_path, method: "GET")
     response.to_s
   end
 end
