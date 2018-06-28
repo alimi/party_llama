@@ -9,5 +9,5 @@
 
 <%= form_with(scope: :session_verifications, url: session_verifications_path) do |form| %>
   <%= form.collection_radio_buttons(:verified, @options, :value, :text) %>
-  <%= form.submit %>
+  <%= form.submit class: 'button blue'%>
 <% end %>
