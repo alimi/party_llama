@@ -48,7 +48,7 @@ en:
 
   sessions:
     new:
-      instructions: Please enter your reservation code.
+      instructions: Please enter the reservation code that was included in your invitation.
     create:
       party_not_found: Sorry, I couldn't find your reservation.
 
