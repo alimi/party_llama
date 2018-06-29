@@ -1,11 +1,26 @@
-<p>Welcome!</p>
-
-<p>Before you R.S.V.P, let's quickly look over the wedding details.</p>
-
+<h1>Welcome!</h1>
 <p>
-  The wedding will be in Baltimore, MD on Saturday, September 1st. There are two parts to the wedding. The day will start with the ceremony and picnic in Patterson Park. Then after a break to rest, we'll meet in the evening for the cake reception at the Douglass-Myers Maritime Park.
+  The wedding will be in Baltimore, MD on Saturday, September 1st. 
+</p>
+<p>
+There are two parts to the wedding:
 </p>
 
-<p>Let's get started!</p>
+<div id="schedule-div">
+  <dl>
+    <dt class="time">
+      2:00pm - 5:30pm
+    </dt>
+    <dd>
+      Ceremony and Picnic in Patterson Park 
+    </dd>
+    <dt class="time">
+      8:00pm - 11:30pm
+    </dt>
+    <dd>
+      Cake Reception at Frederick Douglass-Isaac Myers Maritime Park
+    </dd>
+  </dl>
+</div>
 
-<%= link_to translate("next"), new_patterson_park_responses_path %>
+<%= button_to translate("next"), new_patterson_park_responses_path, method: "get", class: 'button blue'  %>
