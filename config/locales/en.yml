@@ -54,7 +54,7 @@ en:
 
   session_verifications:
     new:
-      instructions: "Is this %{party}?"
+      instructions_html: "Are you <h2>%{party}?</h2>"
 
   voice:
     concluscion:

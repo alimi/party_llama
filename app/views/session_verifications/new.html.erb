@@ -1,13 +1,15 @@
-<p>
+<h1>
   <%=
     translate(
-      ".instructions",
-      party: Current.party.greeting(conjunction: translate("or"))
+      '.instructions_html',
+      party: Current.party.greeting(conjunction: translate('or'))
     )
   %>
-</p>
+</h1>
 
 <%= form_with(scope: :session_verifications, url: session_verifications_path) do |form| %>
-  <%= form.collection_radio_buttons(:verified, @options, :value, :text) %>
-  <%= form.submit class: 'button blue'%>
+  <div class="boolean-buttons">
+    <%= form.button 'No', value: 'false', name: 'session_verifications[verified]', type: 'submit', class: 'button false' %>
+    <%= form.button 'Yes', value: 'true', name: 'session_verifications[verified]', type: 'submit', class: 'button true' %>
+  </div>
 <% end %>

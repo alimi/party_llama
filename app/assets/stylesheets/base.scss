@@ -12,8 +12,13 @@ p {
   line-height: 1.25em;
 }
 
-h1 {
+h1, h2 {
   text-align: center;
+  margin-bottom: 0px;
+}
+
+h2 {
+  margin-top: 0px;
 }
 
 a {
@@ -35,6 +40,19 @@ a {
   margin-left: auto;
   margin-right: auto;
   padding: .25em;
+}
+
+.boolean-buttons {
+  display: flex;
+  text-align: center;
+  .button {
+    width: 2.5em;
+  }
+  .true {
+  }
+  .false {
+    background-color: lightgrey;
+  }
 }
 
 @media all and (min-width: 775px) {
