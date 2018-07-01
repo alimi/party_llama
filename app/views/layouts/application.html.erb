@@ -42,13 +42,13 @@
       </nav>
     </div>
     <div class="content">
-      <img id='caleb_image' src="/assets/caleb-illustration-bigger.gif">
-        <div class='page_content'>
-          <div class='text_content'>
-            <%= yield %>
-          </div>
+      <%= image_tag("caleb-illustration-bigger.gif", id: "caleb_image") %>
+
+      <div class='page_content'>
+        <div class='text_content'>
+          <%= yield %>
         </div>
-      </img>
+      </div>
     </div>
   </body>
 </html>
