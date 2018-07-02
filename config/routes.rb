@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resource :patterson_park_responses, only: [:new, :create]
 
-  resources :sessions, only: [:new, :create]
+  resource :sessions, only: [:new, :create, :destroy]
 
   resources :session_verifications, only: [:new, :create]
 

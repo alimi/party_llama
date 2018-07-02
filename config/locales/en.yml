@@ -52,10 +52,6 @@ en:
     create:
       party_not_found: Sorry, I couldn't find your reservation.
 
-  session_verifications:
-    new:
-      instructions_html: "Are you <h2>%{party}?</h2>"
-
   voice:
     concluscion:
       prefix: Alright, that's the end of the RSVP process. Thanks for taking the time to call.

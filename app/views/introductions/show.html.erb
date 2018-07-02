@@ -1,4 +1,15 @@
-<h1>Welcome!</h1>
+<h1>Welcome <%= Current.party.greeting %>!</h1>
+
+<p>
+  <%=
+    link_to(
+      "Not #{Current.party.greeting}? Click here.",
+      sessions_path,
+      method: :delete
+    )
+  %>
+</p>
+
 <p>
   The wedding will be in Baltimore, MD on Saturday, September 1st. 
 </p>

@@ -11,8 +11,14 @@ class SessionsController < ApplicationController
       save_current_party_in_session
     else
       flash[:error] = translate(".party_not_found")
-      redirect_to new_session_path
+      redirect_to root_path
     end
+  end
+
+  def destroy
+    session.delete(:current_party_id)
+    Current.party = nil
+    redirect_to root_path
   end
 
   private
@@ -23,7 +29,7 @@ class SessionsController < ApplicationController
     if Current.party.passed_submission_deadline?
       redirect_to conclusion_path
     else
-      redirect_to new_session_verification_path
+      redirect_to introduction_path
     end
   end
 end
