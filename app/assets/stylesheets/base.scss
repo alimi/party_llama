@@ -57,13 +57,27 @@ a {
   }
 }
 
+.party-section {
+  text-align: center;
+  .button_to {
+    display: inline-block;
+  }
+}
+
 @media all and (min-width: 775px) {
   html body {
     margin-left: 2em;
     margin-right: 2em;
   }
 
-.left_align {
-  text-align: left;
+  .party-section {
+    .button_to {
+      padding-right: .5em;
+      padding-left: .5em;
+    }
+  }
+
+  .left_align {
+    text-align: left;
   }
 }
