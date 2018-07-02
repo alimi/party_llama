@@ -9,7 +9,7 @@ module PartyAuthentication
     if party = Party.find_by(id: session[:current_party_id])
       Current.party = party
     else
-      redirect_to new_session_path
+      redirect_to root_path
     end
   end
 end
