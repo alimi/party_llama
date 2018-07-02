@@ -4,9 +4,11 @@
 
 <%= form_with scope: :patterson_park_response, url: patterson_park_responses_path do |form| %>
   <%= form.collection_check_boxes :attending_guest_ids, @guests, :id, :name do |b| %>
-    <%= b.check_box checked: b.object.attending_patterson_park?  %>
-    <%= b.label %>
+    <%= b.label class: "clickable" do %>
+      <%= b.check_box checked: b.object.attending_patterson_park? %>
+      <%= b.text %>
+    <% end %>
   <% end %>
 
-  <%= form.submit translate("next") %>
+  <%= form.submit translate("next"), class: "button blue" %>
 <% end %>
