@@ -48,6 +48,6 @@
   </p>
 <% end %>
 
-<p><%= link_to translate(".edit"), new_patterson_park_responses_path %></p>
+<p><%= button_to translate(".edit"), new_patterson_park_responses_path, class: 'button blue' %></p>
 
-<%= button_to translate("submit"), party_response_submissions_path %>
+<%= button_to translate("submit"), party_response_submissions_path, class: 'button blue' %>
