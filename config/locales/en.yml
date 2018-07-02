@@ -42,9 +42,7 @@ en:
     index:
       patterson_park: Ceremony and Picnic in Patterson Park
       douglass_myers: Cake Reception at the Fredrick Douglass-Isaac Myers Maritime Park
-      attending: "Attending: %{guests}"
-      not_attending: "Not Attending: %{guests}"
-      edit: Edit Responses
+      edit: Edit
 
   sessions:
     new:

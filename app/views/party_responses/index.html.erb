@@ -1,53 +1,31 @@
-<p>Let's review your responses.</p>
+<h1>Let's Review Your Responses</h1>
 
-<p><strong><%= translate(".patterson_park") %></strong></p>
+<div class="section">
+  <h2 class="blue"><%= translate(".patterson_park") %></h2>
 
-<% if @patterson_park_guests.attending.any? %>
-  <p>
-    <%=
-      translate(
-        ".attending",
-        guests: @patterson_park_guests.attending.map(&:name).to_sentence
-      )
-    %>
-  </p>
-<% end %>
+  <% @patterson_park_guests.attending.each do |guest| %>
+    <p>✅ <%= guest.name %></p>
+  <% end %>
 
-<% if @patterson_park_guests.not_attending.any? %>
-  <p>
-    <%=
-      translate(
-        ".not_attending",
-        guests: @patterson_park_guests.not_attending.map(&:name).to_sentence
-      )
-    %>
-  </p>
-<% end %>
+  <% @patterson_park_guests.not_attending.each do |guest| %>
+    <p>❌ <%= guest.name %></p>
+  <% end %>
+</div>
 
-<p><strong><%= translate(".douglass_myers") %></strong></p>
+<div class="section">
+  <h2 class="blue"><%= translate(".douglass_myers") %></h2>
 
-<% if @douglass_myers_guests.attending.any? %>
-  <p>
-    <%=
-      translate(
-        ".attending",
-        guests: @douglass_myers_guests.attending.map(&:name).to_sentence
-      )
-    %>
-  </p>
-<% end %>
+  <% @douglass_myers_guests.attending.each do |guest| %>
+    <p>✅ <%= guest.name %></p>
+  <% end %>
 
-<% if @douglass_myers_guests.not_attending.any? %>
-  <p>
-    <%=
-      translate(
-        ".not_attending",
-        guests: @douglass_myers_guests.not_attending.map(&:name).to_sentence
-      )
-    %>
-  </p>
-<% end %>
+  <% @douglass_myers_guests.not_attending.each do |guest| %>
+    <p>❌ <%= guest.name %></p>
+  <% end %>
+</div>
 
-<p><%= button_to translate(".edit"), new_patterson_park_responses_path, method: :get, class: 'button blue' %></p>
+<div class="section">
+  <%= button_to translate(".edit"), new_patterson_park_responses_path, method: :get, class: 'button blue' %>
 
-<%= button_to translate("submit"), party_response_submissions_path, class: 'button blue' %>
+  <%= button_to translate("submit"), party_response_submissions_path, class: 'button blue' %>
+</div>

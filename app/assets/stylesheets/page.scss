@@ -5,16 +5,22 @@
   width: 115%;
   height: auto;
 }
+
 .page_content {
-	padding: 1em;
+  padding: 1em;
   background: white;
   color: #7b0b5a;
   min-height: 75%;
 }
+
 .blue {
-	color: #1F2558;
+  color: #1F2558;
 }
 
+.section {
+  margin-top: 3em;
+  text-align: center;
+}
 
 @media all and (min-width: 775px) {
   .page_content {
