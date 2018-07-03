@@ -12,7 +12,7 @@ class Voice::SessionsController < Voice::ApplicationController
   end
 
   def create
-    party = Party.find_by(reservation_code: voice_input.to_s.delete(" "))
+    party = Party.find_by(reservation_code: voice_input.to_s)
 
     if party
       session[:current_party_id] = party.id
@@ -20,5 +20,11 @@ class Voice::SessionsController < Voice::ApplicationController
     else
       redirect_to new_voice_session_path(prefix: translate(".error"))
     end
+  end
+
+  private
+
+  def expected_input
+    Party.pluck(:reservation_code).join(",")
   end
 end

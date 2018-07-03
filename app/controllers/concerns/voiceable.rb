@@ -6,6 +6,13 @@ module Voiceable
   private
 
   def voice_params
-    params.slice("Digits", "SpeechResult", "Confidence").permit!
+    params.
+      slice("Digits", "SpeechResult", "Confidence").
+      permit!.
+      merge(expecting: expected_input)
+  end
+
+  def expected_input
+    ""
   end
 end

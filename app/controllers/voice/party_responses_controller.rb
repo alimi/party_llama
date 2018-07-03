@@ -18,7 +18,7 @@ class Voice::PartyResponsesController < Voice::ApplicationController
     render xml: VoiceXML.new(
       message: message,
       next_path: venue_path(:voice_party_responses_path),
-      expect: AffirmativeAndNegativeWords.to_s
+      expect: expected_input
     )
   end
 
@@ -48,5 +48,9 @@ class Voice::PartyResponsesController < Voice::ApplicationController
         prefix: translate(".transition")
       )
     end
+  end
+
+  def expected_input
+    AffirmativeAndNegativeWords.to_s
   end
 end

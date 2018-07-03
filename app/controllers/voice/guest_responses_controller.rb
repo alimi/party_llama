@@ -11,7 +11,7 @@ class Voice::GuestResponsesController < Voice::ApplicationController
     render xml: VoiceXML.new(
       message: message,
       next_path: venue_path(:voice_guest_responses_path, guest_id: guest.id),
-      expect: AffirmativeAndNegativeWords.to_s
+      expect: expected_input
     )
   end
 
@@ -57,5 +57,9 @@ class Voice::GuestResponsesController < Voice::ApplicationController
 
   def current_guest
     @current_guest ||= Current.party.guests.find_by(id: params[:guest_id])
+  end
+
+  def expected_input
+    AffirmativeAndNegativeWords.to_s
   end
 end

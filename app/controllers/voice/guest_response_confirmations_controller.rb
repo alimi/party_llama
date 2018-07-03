@@ -26,7 +26,7 @@ class Voice::GuestResponseConfirmationsController < Voice::ApplicationController
     render xml: VoiceXML.new(
       message: message,
       next_path: venue_path(:voice_guest_response_confirmations_path),
-      expect: AffirmativeAndNegativeWords.to_s
+      expect: expected_input
     )
   end
 
@@ -44,5 +44,11 @@ class Voice::GuestResponseConfirmationsController < Voice::ApplicationController
         prefix: translate("voice.unclear_yes_no")
       )
     end
+  end
+
+  private
+
+  def expected_input
+    AffirmativeAndNegativeWords.to_s
   end
 end

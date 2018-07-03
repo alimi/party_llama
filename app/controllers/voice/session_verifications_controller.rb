@@ -12,7 +12,7 @@ class Voice::SessionVerificationsController < Voice::ApplicationController
     render xml: VoiceXML.new(
       message: message,
       next_path: voice_session_verifications_path,
-      expect: AffirmativeAndNegativeWords.to_s
+      expect: expected_input
     )
   end
 
@@ -40,5 +40,9 @@ class Voice::SessionVerificationsController < Voice::ApplicationController
     else
       redirect_to new_voice_party_response_path(venue: "patterson_park")
     end
+  end
+
+  def expected_input
+    AffirmativeAndNegativeWords.to_s
   end
 end

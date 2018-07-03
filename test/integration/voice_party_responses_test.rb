@@ -33,7 +33,7 @@ class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
       "Am I speaking with Philip or Vivian Banks?"
     )
 
-    post_to_next_path params: { "SpeechResult" => "Yes.", "Confidence" => ".9" }
+    post_to_next_path params: { "SpeechResult" => "Yes." }
 
     assert_match(
       /everyone.*attending.*Patterson Park/,
