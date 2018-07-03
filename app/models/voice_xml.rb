@@ -19,7 +19,13 @@ class VoiceXML
 
   def continuing_xml
     response = Twilio::TwiML::VoiceResponse.new do |response|
-      response.gather action: next_path, input: "dtmf speech", hints: expect, language: language do |gather|
+      response.gather(
+        action: next_path,
+        input: "dtmf speech",
+        hints: expect,
+        language: language,
+        timeout: 3
+      )do |gather|
         gather.say message, say_options
       end
     end
