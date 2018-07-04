@@ -30,6 +30,8 @@ class VoiceXML
       end
     end
 
+    response.redirect(next_path)
+
     response.to_s
   end
 
