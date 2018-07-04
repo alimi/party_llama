@@ -51,10 +51,6 @@ en:
       party_not_found: Sorry, I couldn't find your reservation.
 
   voice:
-    concluscion:
-      prefix: Alright, that's the end of the RSVP process. Thanks for taking the time to call.
-      attending: Ali and Tasha will be excited to see you at the wedding! To get more info about the wedding, please visit ali and tasha dot com. Good bye.
-      not_attending: Ali and Tasha will miss you at the wedding but no hard feelings. Good bye.
     unclear_yes_no: Sorry, I didn't understand you. You can say yes or no, or you can press 1 for yes and 2 for no.
     guest_response_confirmations:
       create:
@@ -68,7 +64,7 @@ en:
           zero: And you answered no for no one.
           one: "And you answered no for %{guests}."
           other: "And you answered no for %{guests}."
-        concluscion: Is this correct?
+        conclusion: Is this correct?
         patterson_park:
           intro: Let's go over your responses for the ceremony and picnic at Patterson Park.
         douglass_myers:
@@ -105,3 +101,13 @@ en:
       create:
         passed_submission_deadline: Sorry, Ali and Tasha are no longer accepting responses for your party. Good bye.
         wrong_party: Sorry, let's try that again.
+    conclusions:
+      new:
+        attending: Ali and Tasha will be excited to see you at the wedding! To get more info about the wedding, please visit ali and tasha dot com.
+        not_attending: Ali and Tasha will miss you at the wedding but no hard feelings.
+        message: "%{prefix} Before you hangup, would you like to leave a message for Ali and Tasha?"
+      create:
+        good_bye: See you at the wedding! Good bye.
+    messages:
+      new:
+        message: Record your message after the beep. You can hang up when you're done.

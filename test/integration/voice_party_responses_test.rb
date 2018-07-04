@@ -75,15 +75,32 @@ class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
       xml_response.Response.Gather.Say.content
     )
 
-    post_to_next_path(
-      params: { "SpeechResult" => "Yes.", "Confidence" => ".9" },
-      follow_redirect: false
-    )
+    post_to_next_path params: { "SpeechResult" => "Yes.", "Confidence" => ".9" }
 
     assert_match(
-      /Thanks.*!/,
+      /leave a message/,
+      xml_response.Response.Gather.Say.content
+    )
+
+    post_to_next_path params: { "SpeechResult" => "Yes.", "Confidence" => ".9" }
+
+    assert_match(
+      /Record your message/,
       xml_response.Response.Say.content
     )
+
+    assert_equal(
+      voice_messages_path(locale: "en"),
+      xml_response.Response.Record["action"],
+      "Recordings are sent to voice_messages_path"
+    )
+
+    post(
+      xml_response.Response.Record["action"],
+      params: { "RecordingUrl" => "foo.bar.com" }
+    )
+
+    assert xml_response.Response.children.empty?, "Render an empty resposne"
   end
 
   test "a party of one submits their responses" do
@@ -129,13 +146,20 @@ class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
       xml_response.Response.Gather.Say.content
     )
 
+    post_to_next_path params: { "SpeechResult" => "Yes.", "Confidence" => ".9" }
+
+    assert_match(
+      /leave a message/,
+      xml_response.Response.Gather.Say.content
+    )
+
     post_to_next_path(
-      params: { "SpeechResult" => "Yes.", "Confidence" => ".9" },
+      params: { "SpeechResult" => "No.", "Confidence" => ".9" },
       follow_redirect: false
     )
 
     assert_match(
-      /Thanks.*!/,
+      /Good bye/,
       xml_response.Response.Say.content
     )
   end
@@ -209,7 +233,7 @@ class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
 
   def post_to_next_path(options = {})
     follow_redirect = options.delete(:follow_redirect) { true }
-    post xml_response.Response.Gather["action"], options
+    post xml_response.Response.Gather["action"] , options
     follow_redirect! if follow_redirect
   end
 

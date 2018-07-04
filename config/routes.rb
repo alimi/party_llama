@@ -26,7 +26,11 @@ Rails.application.routes.draw do
   end
 
   namespace :voice, path: "/voice/(:locale)" do
+    resources :conclusions, only: [:new, :create]
+
     resource :introduction, only: [:show]
+
+    resources :messages, only: [:new, :create]
 
     scope "/:venue", constraints: VenueConstraint.new do
       resources :guest_responses, only: [:new, :create]

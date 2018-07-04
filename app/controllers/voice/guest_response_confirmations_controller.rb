@@ -20,7 +20,7 @@ class Voice::GuestResponseConfirmationsController < Voice::ApplicationController
         guests: not_attending_guests.map(&:first_name).to_sentence,
         count: not_attending_guests.length
       ),
-      translate(".concluscion")
+      translate(".conclusion")
     ].join(" ")
 
     render xml: VoiceXML.new(

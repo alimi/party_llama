@@ -15,10 +15,8 @@ es:
   or: o
 
   voice:
-    concluscion:
+    conclusion:
       prefix: Bueno, ya terminamos. Gracias por tomarse el tiempo para llamar.
-      attending: ¡Ali y Tasha van a estar emocionados de verle en la boda! Para obtener más información sobre la boda, por favor visite ali and tasha punto com. Adiós.
-      not_attending: Ali y Tasha van a extrañarle en la boda pero no le preocupes. Adiós.
     unclear_yes_no: Lo siento, no le entendí. Puede decir sí o no, o puede marcar uno para sí or dos para no.
     guest_response_confirmations:
       create:
@@ -32,7 +30,7 @@ es:
           zero: Y contestó que no por nadie.
           one: "Y contestó que no por %{guests}."
           other: "Y contestó que no por %{guests}."
-        concluscion: ¿Es correcto?
+        conclusion: ¿Es correcto?
         patterson_park:
           intro: Vamos a repasar sus respuestas para la ceremonia y pícnic en Parque Patterson.
         douglass_myers:
@@ -69,3 +67,13 @@ es:
       create:
         passed_submission_deadline: Lo siento, Ali y Natasha no estan aceptando respuestas para su grupo. Adios.
         wrong_party: Lo siento, vamos a tratar otra vez.
+    conclusions:
+      new:
+        attending: ¡Ali y Tasha van a estar emocionados de verle en la boda! Para obtener más información sobre la boda, por favor visite ali and tasha punto com.
+        not_attending: Ali y Tasha van a extrañarle en la boda pero no le preocupes.
+        message: "%{prefix} ¿Antes de colgar, le gustaria dejar un mensaje para Ali y Natasha?"
+      create:
+        good_bye: ¡Nos vemos en la boda! Adiós.
+    messages:
+      new:
+        message: Deje su mensaje despues de la señal. Puede colgar cuando termine.
