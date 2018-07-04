@@ -1,0 +1,13 @@
+.conclusion-image {
+  width: 100%;
+}
+
+@media all and (min-width: 775px) {
+  .conclusion-image {
+    width: 220%;
+    margin-left: -60%;
+    margin-right: -60%;
+  }
+}
+
+
