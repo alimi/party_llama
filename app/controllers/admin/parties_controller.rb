@@ -1,4 +1,4 @@
-class Admin::PartiesController < ApplicationController
+class Admin::PartiesController < Admin::ApplicationController
   include AdminAuthentication
 
   def index

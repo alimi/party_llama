@@ -1,4 +1,4 @@
-class Admin::GuestsController < ApplicationController
+class Admin::GuestsController < Admin::ApplicationController
   include AdminAuthentication
 
   before_action :set_party
