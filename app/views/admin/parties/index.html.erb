@@ -6,14 +6,42 @@
       <th>Invited</th>
       <th>Attending Patterson Park</th>
       <th>Attending Douglass-Myers</th>
+      <th>Not Responded</th>
     </tr>
   </thead>
 
   <tbody>
     <tr>
-      <td><%= @invited_guest_count %></td>
-      <td><%= @attending_patterson_park_count %></td>
-      <td><%= @attending_douglass_myers_count %></td>
+      <td>
+        <%= link_to(@counts.invited, admin_parties_path) %>
+      </td>
+
+      <td>
+        <%=
+          link_to(
+            @counts.patterson_park,
+            admin_parties_path(attending: "patterson_park")
+          )
+        %>
+      </td>
+
+      <td>
+        <%=
+          link_to(
+            @counts.douglass_myers,
+            admin_parties_path(attending: "douglass_myers")
+          )
+        %>
+      </td>
+
+      <td>
+        <%=
+          link_to(
+            @counts.not_responded,
+            admin_parties_path(attending: "unknown")
+          )
+        %>
+      </td>
     </tr>
   </tbody>
 </table>

@@ -2,21 +2,21 @@ class Admin::PartiesController < Admin::ApplicationController
   include AdminAuthentication
 
   def index
-    @parties = Party.includes(:guests).all
+    @parties = Party.
+      includes(:guests).
+      order("responses_submitted_at IS NULL, responses_submitted_at DESC")
 
-    @invited_guest_count = Guest.count
+    @parties = if ["patterson_park", "douglass_myers"].include?(params[:attending])
+                 @parties.where.not(responses_submitted_at: nil).
+                   joins(:guests).
+                   where(guests: { "attending_#{params[:attending]}": true })
+               elsif params[:attending] == "unknown"
+                 @parties.where(responses_submitted_at: nil)
+               else
+                 @parties
+               end
 
-    @attending_patterson_park_count = Guest.joins(:party).
-      where.not(parties: { responses_submitted_at: nil }).
-      where(attending_patterson_park: true).
-      count
-
-    @attending_douglass_myers_count = Guest.joins(:party).
-      where.not(parties: { responses_submitted_at: nil }).
-      where(attending_douglass_myers: true).
-      count
-
-    @no_response_party_count = Party.where(responses_submitted_at: nil).count
+    @counts = Counts.new
   end
 
   def show
@@ -66,5 +66,31 @@ class Admin::PartiesController < Admin::ApplicationController
       :responses_end_at,
       guests_attributes: [:primary, :first_name, :last_name]
     )
+  end
+
+  class Counts
+    def invited
+      Guest.count
+    end
+
+    def patterson_park
+      Guest.joins(:party).
+        where.not(parties: { responses_submitted_at: nil }).
+        where(attending_patterson_park: true).
+        count
+    end
+
+    def douglass_myers
+      Guest.joins(:party).
+        where.not(parties: { responses_submitted_at: nil }).
+        where(attending_douglass_myers: true).
+        count
+    end
+
+    def not_responded
+      Guest.joins(:party).
+        where(parties: { responses_submitted_at: nil }).
+        count
+    end
   end
 end
