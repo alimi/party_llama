@@ -1,4 +1,4 @@
-<h1>Guest Summary</h1>
+<h1>Summary</h1>
 
 <table>
   <thead>
@@ -7,6 +7,7 @@
       <th>Attending Patterson Park</th>
       <th>Attending Douglass-Myers</th>
       <th>Not Responded</th>
+      <th>Messages</th>
     </tr>
   </thead>
 
@@ -39,6 +40,15 @@
           link_to(
             @counts.not_responded,
             admin_parties_path(attending: "unknown")
+          )
+        %>
+      </td>
+
+      <td>
+        <%=
+          link_to(
+            @counts.messages,
+            admin_parties_path(messages: "true")
           )
         %>
       </td>

@@ -12,6 +12,8 @@ class Admin::PartiesController < Admin::ApplicationController
                    where(guests: { "attending_#{params[:attending]}": true })
                elsif params[:attending] == "unknown"
                  @parties.where(responses_submitted_at: nil)
+               elsif params[:messages] == "true"
+                 @parties.where.not(messages: "{}")
                else
                  @parties
                end
@@ -91,6 +93,10 @@ class Admin::PartiesController < Admin::ApplicationController
       Guest.joins(:party).
         where(parties: { responses_submitted_at: nil }).
         count
+    end
+
+    def messages
+      Party.sum("cardinality(messages)")
     end
   end
 end
