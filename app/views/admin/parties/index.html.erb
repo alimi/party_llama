@@ -60,6 +60,7 @@
       <th>Responses Accepted Until</th>
       <th>Attending Patterson Park</th>
       <th>Attending Douglass-Myers</th>
+      <th>Messages</th>
     </tr>
   </thead>
 
@@ -84,6 +85,13 @@
           <% else %>
             🤷‍♀️
           <% end %>
+        </td>
+        <td>
+          <% party.messages.each do |message| %>
+            <%= link_to("🔊", "#{message}.mp3", class: "audio", target: "_blank") %>
+          <% end %>
+
+          <%= "🔇" if party.messages.blank? %>
         </td>
       </tr>
     <% end %>
