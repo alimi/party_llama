@@ -15,15 +15,11 @@ class PartyResponsesTest < ApplicationSystemTestCase
     @party.guests.create!(first_name: "Carlton")
 
     visit root_path
-    fill_in "Reservation Code", with: "23 24 25"
+    fill_in "session_reservation_code", with: "23 24 25"
     click_button "Submit"
 
-    assert page.has_content?("Philip or Vivian Banks")
-    choose "Yes"
-    click_button "Submit"
-
-    assert page.has_content?("Welcome")
-    click_link "Next"
+    assert page.has_content?("Welcome Philip and Vivian Banks!")
+    click_button "Next"
 
     assert page.has_content?("Patterson Park")
     check "Philip Banks"
@@ -35,25 +31,27 @@ class PartyResponsesTest < ApplicationSystemTestCase
     check "Vivian Banks"
     click_button "Next"
 
-    assert page.has_content?("review")
+    assert page.has_content?(/Review/)
     assert(
-      find("p", text: "Patterson Park").
-      sibling("p", text: "Attending: Philip Banks and Carlton Banks").
-      sibling("p", text: "Not Attending: Vivian Banks")
+      find("h2", text: /Patterson Park/).
+      sibling("p", text: "✅ Philip Banks").
+      sibling("p", text: "✅ Carlton Banks").
+      sibling("p", text: "❌ Vivian Banks")
     )
     assert(
-      find("p", text: "Patterson Park").
-      sibling("p", text: "Attending: Philip Banks and Vivian Banks").
-      sibling("p", text: "Not Attending: Carlton Banks")
+      find("h2", text: /Fredrick Douglass-Isaac Myers/).
+      sibling("p", text: "✅ Philip Banks").
+      sibling("p", text: "✅ Vivian Banks").
+      sibling("p", text: "❌ Carlton Banks")
     )
     click_button "Submit"
 
-    assert page.has_content?("Thanks")
+    assert page.has_content?(/Thanks/)
   end
 
   test "a party enters an invalid reservation code" do
     visit root_path
-    fill_in "Reservation Code", with: "something wrong"
+    fill_in "session_reservation_code", with: "something wrong"
     click_button "Submit"
 
     assert page.has_content?("Sorry")
@@ -63,7 +61,7 @@ class PartyResponsesTest < ApplicationSystemTestCase
     @party.update!(responses_end_at: 1.day.ago)
 
     visit root_path
-    fill_in "Reservation Code", with: @party.reservation_code
+    fill_in "session_reservation_code", with: @party.reservation_code
     click_button "Submit"
 
     assert page.has_content?("Thanks"), "The party is sent to the conclusion."
