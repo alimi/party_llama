@@ -9,14 +9,15 @@ module AdminAuthentication
     authenticate_or_request_with_http_digest(
       Rails.application.credentials.admin_realm
     ) do |username|
-      admins[username]&.authentication_hash
+      admins[username]&.password
     end
   end
 
   def admins
-    @admins ||=
-      Rails.application.credentials.admins.values.
-        map { |credentials| [credentials[:username], Admin.new(credentials)] }.
-        to_h
+    @admins ||= Rails.application.credentials.admins.values.
+      map { |credentials| Admin.new(credentials[:username], credentials[:password]) }.
+      index_by(&:username)
   end
+
+  Admin = Struct.new(:username, :password)
 end
