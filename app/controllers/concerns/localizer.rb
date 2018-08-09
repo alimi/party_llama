@@ -10,6 +10,10 @@ module Localizer
   end
 
   def default_url_options
-    { locale: I18n.locale }
+    if params[:locale].present?
+      { locale: I18n.locale }
+    else
+      {}
+    end
   end
 end

@@ -90,7 +90,7 @@ class VoicePartyResponsesTest < ActionDispatch::IntegrationTest
     )
 
     assert_equal(
-      voice_messages_path(locale: "en"),
+      voice_messages_path,
       xml_response.Response.Record["action"],
       "Recordings are sent to voice_messages_path"
     )
