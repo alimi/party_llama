@@ -10,12 +10,33 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Attending Patterson Park</th>
+    <th>Attending Douglass-Myers</th>
     <th>Actions</th>
   </tr>
 
   <% @party.guests.each do |guest| %>
     <tr>
       <td><%= guest.name %></td>
+      <% if @party.responses_submitted_at.blank? %>
+        <td>🤷‍♀️</td>
+        <td>🤷‍♀️</td>
+      <% else %>
+        <td>
+          <% if guest.attending_patterson_park? %>
+            ✅
+          <% else %>
+            ❌
+          <% end %>
+        </td>
+        <td>
+          <% if guest.attending_douglass_myers? %>
+            ✅
+          <% else %>
+            ❌
+          <% end %>
+        </td>
+      <% end %>
       <td>
         <%= link_to "Edit", edit_admin_party_guest_path(@party, guest) %>
       </td>
