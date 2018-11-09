@@ -1,9 +1,9 @@
 # Party Llama
 
-This little app was built to collect RSVP responses for [Ali](https://twitter.com/alimeye/) and [Tasha's](https://twitter.com/latazzajones/) wedding.
+This little app was built to collect RSVP responses for [Ali](https://github.com/alimi) and [Tasha's](https://github.com/latazzajones/) wedding.
 
 * Is it perfect? - No.
-* Is it good enough? - Check back in August! 🙈
+* Is it good enough? - Yes! 🕺🏾
 
 # Dependencies
 
