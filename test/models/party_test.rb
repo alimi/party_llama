@@ -30,4 +30,8 @@ class PartyTest < ActiveSupport::TestCase
 
     assert_equal false, party.passed_submission_deadline?
   end
+
+  test "somethig bogus" do
+    assert false
+  end
 end
